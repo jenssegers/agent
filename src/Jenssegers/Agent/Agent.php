@@ -79,35 +79,35 @@ class Agent {
 	 *
 	 * @var string
 	 */
-	protected $platform = '';
+	protected $platform = null;
 
 	/**
 	 * Current user-agent browser
 	 *
 	 * @var string
 	 */
-	protected $browser = '';
+	protected $browser = null;
 
 	/**
 	 * Current user-agent version
 	 *
 	 * @var string
 	 */
-	protected $version = '';
+	protected $version = null;
 
 	/**
 	 * Current user-agent mobile name
 	 *
 	 * @var string
 	 */
-	protected $mobile = '';
+	protected $mobile = null;
 
 	/**
 	 * Current user-agent robot name
 	 *
 	 * @var string
 	 */
-	protected $robot = '';
+	protected $robot = null;
 
 
 	/**
@@ -172,7 +172,6 @@ class Agent {
 			}
 		}
 
-		$this->platform = 'Unknown Platform';
 		return false;
 	}
 
