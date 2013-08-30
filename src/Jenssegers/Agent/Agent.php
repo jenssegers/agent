@@ -263,7 +263,7 @@ class Agent {
 
         if (count($this->languages) === 0)
         {
-            $this->languages = array('Undefined');
+            $this->languages = array();
         }
     }
 
@@ -282,7 +282,7 @@ class Agent {
 
         if (count($this->charsets) === 0)
         {
-            $this->charsets = array('Undefined');
+            $this->charsets = array();
         }
     }
 
