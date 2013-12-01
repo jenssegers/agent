@@ -96,22 +96,6 @@ class Agent extends Mobile_Detect {
 
 
     /**
-    * Increase the speed by checking if the user agent contains
-    * the key we are looking for before looping all the rules.
-    *
-    * @inherit
-    */
-    protected function matchUAAgainstKey($key, $userAgent = null)
-    {
-        // Just check if the user agent contains the word we are looking for
-        if ($this->match($key, $userAgent)) return true;
-
-        // Let Mobile_Detect handle stuff
-        return parent::matchUAAgainstKey($key, $userAgent);
-    }
-
-
-    /**
      * Get accept languages.
      *
      * @return array
@@ -148,12 +132,12 @@ class Agent extends Mobile_Detect {
 
 
     /**
-    * Match a detection rule and return the key.
-    *
-    * @param  array     $rules
-    * @param  null      $userAgent
-    * @return string
-    */
+     * Match a detection rule and return the key.
+     *
+     * @param  array     $rules
+     * @param  null      $userAgent
+     * @return string
+     */
     protected function findDetectionRulesAgainstUA(array $rules, $userAgent = null)
     {
         // Begin general search.
@@ -163,6 +147,54 @@ class Agent extends Mobile_Detect {
 
             // Check match
             if ($this->match($regex, $userAgent)) return $key;
+        }
+
+        return false;
+    }
+
+
+    /**
+     * @inherit
+     */
+    protected function matchDetectionRulesAgainstUA($userAgent = null)
+    {
+        // Begin general search.
+        foreach ($this->getRules() as $_regex) {
+            if (empty($_regex)) {
+                continue;
+            }
+            if ($this->match($_regex, $userAgent)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+    /**
+     * Increase the speed by checking if the user agent contains
+     * the key we are looking for before looping all the rules.
+     *
+     * @inherit
+     */
+    protected function matchUAAgainstKey($key, $userAgent = null)
+    {
+        // Make the keys lowercase so we can match: isIphone(), isiPhone(), isiphone(), etc.
+        $key = strtolower($key);
+
+        // Just check if the user agent contains the word we are looking for
+        if ($this->match($key, $userAgent)) return true;
+
+        //change the keys to lower case
+        $_rules = array_change_key_case($this->getRules());
+
+        if (array_key_exists($key, $_rules)) {
+            if (empty($_rules[$key])) {
+                return null;
+            }
+
+            return $this->match($_rules[$key], $userAgent);
         }
 
         return false;
