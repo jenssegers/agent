@@ -3,6 +3,8 @@ Laravel 4 User Agent
 
 A user agent class for Laravel 4, based on [Mobile Detect](https://github.com/serbanghita/Mobile-Detect) with extended functionality.
 
+*The previous version is still available under the 1.0.0 tag.*
+
 Installation
 ------------
 
