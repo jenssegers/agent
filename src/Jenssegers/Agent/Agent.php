@@ -184,9 +184,6 @@ class Agent extends Mobile_Detect {
         // Make the keys lowercase so we can match: isIphone(), isiPhone(), isiphone(), etc.
         $key = strtolower($key);
 
-        // Just check if the user agent contains the word we are looking for
-        if ($this->match($key, $userAgent)) return true;
-
         //change the keys to lower case
         $_rules = array_change_key_case($this->getRules());
 
