@@ -1,0 +1,16 @@
+language: php
+
+branches:
+  only:
+    - master
+
+php:
+  - 5.3
+  - 5.4
+  - 5.5
+
+before_script:
+  - composer self-update
+  - composer install --dev --no-interaction
+
+script: phpunit
