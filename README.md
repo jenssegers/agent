@@ -58,24 +58,33 @@ Additional Functionality
 
 Since the original library was inspired on CodeIgniter, I decided to add some additional functionality:
 
-### Agent::languages()
+### Accept languages
 
 Get the browser's accept languages. Example:
 
-	['nl-nl', 'nl', 'en-us', 'en']
+	$languages = Agent::languages();
+	// ['nl-nl', 'nl', 'en-us', 'en']
 
-### Agent::device()
+### Device name
 
 Get the device name, if mobile. (iPhone, Nexus, AsusTablet, ...)
 
-### Agent::platform()
+	Agent::device();
+
+### Operating system name
 
 Get the operating system. (Ubuntu, Windows, OS X, ...)
 
-### Agent::browser()
+	Agent::platform();
+
+### Browser name
 
 Get the browser name. (Chrome, IE, Safari, Firefox, ...)
 
-### Agent::isRobot()
+	Agent::browser();
+
+### Robot detection
 
 Check if the user is a robot.
+
+	Agent::isRobot();
