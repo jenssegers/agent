@@ -115,24 +115,6 @@ class Agent extends Mobile_Detect {
 
 
     /**
-     * Get accepted character sets.
-     *
-     * @return array
-     */
-    public function charsets()
-    {
-        $header = $this->getHttpHeader('HTTP_ACCEPT_LANGUAGE');
-
-        if ($header)
-        {
-            return explode(',', preg_replace('/(;q=.+)/i', '', strtolower(trim($header))));
-        }
-
-        return array();
-    }
-
-
-    /**
      * Match a detection rule and return the key.
      *
      * @param  array     $rules
