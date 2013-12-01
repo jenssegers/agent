@@ -137,51 +137,6 @@ class Agent extends Mobile_Detect {
 
 
     /**
-     * @inherit
-     */
-    protected function matchDetectionRulesAgainstUA($userAgent = null)
-    {
-        // Begin general search.
-        foreach ($this->getRules() as $_regex) {
-            if (empty($_regex)) {
-                continue;
-            }
-            if ($this->match($_regex, $userAgent)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-
-    /**
-     * Increase the speed by checking if the user agent contains
-     * the key we are looking for before looping all the rules.
-     *
-     * @inherit
-     */
-    protected function matchUAAgainstKey($key, $userAgent = null)
-    {
-        // Make the keys lowercase so we can match: isIphone(), isiPhone(), isiphone(), etc.
-        $key = strtolower($key);
-
-        //change the keys to lower case
-        $_rules = array_change_key_case($this->getRules());
-
-        if (array_key_exists($key, $_rules)) {
-            if (empty($_rules[$key])) {
-                return null;
-            }
-
-            return $this->match($_rules[$key], $userAgent);
-        }
-
-        return false;
-    }
-
-
-    /**
      * Get the browser name.
      *
      * @return string
@@ -196,6 +151,7 @@ class Agent extends Mobile_Detect {
 
         return $this->findDetectionRulesAgainstUA($rules, $userAgent);
     }
+
 
     /**
      * Get the platform name.
@@ -214,6 +170,7 @@ class Agent extends Mobile_Detect {
         return $this->findDetectionRulesAgainstUA($rules, $userAgent);
     }
 
+
     /**
      * Get the device name.
      *
@@ -231,6 +188,7 @@ class Agent extends Mobile_Detect {
 
         return $this->findDetectionRulesAgainstUA($rules, $userAgent);
     }
+
 
     /**
      * Check if device is a robot.
@@ -254,6 +212,7 @@ class Agent extends Mobile_Detect {
 
         return false;
     }
+
 
     /**
      * Changing detection type to extended
