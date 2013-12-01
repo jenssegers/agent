@@ -21,9 +21,9 @@ And add the Agent alias to `app/config/app.php`:
 Basic Usage
 -----------
 
-All of the original [Mobile Detect](https://github.com/serbanghita/Mobile-Detect) is still available, check out more examples over at https://github.com/serbanghita/Mobile-Detect/wiki/Code-examples
+All of the original [Mobile Detect](https://github.com/serbanghita/Mobile-Detect) functionality is still available, check out more examples over at https://github.com/serbanghita/Mobile-Detect/wiki/Code-examples
 
-### Agent::is()
+### Is?
 
 Check for a certain property in the user agent.
 
