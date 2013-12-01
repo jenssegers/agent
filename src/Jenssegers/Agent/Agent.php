@@ -1,494 +1,266 @@
 <?php namespace Jenssegers\Agent;
 
-use \Config;
+use BadMethodCallException;
+use Mobile_Detect;
 
-class Agent {
-
-    /**
-     * Current user-agent
-     *
-     * @var string
-     */
-    protected $agent = null;
+class Agent extends Mobile_Detect {
 
     /**
-     * Flag for if the user-agent belongs to a browser
-     *
-     * @var bool
-     */
-    protected $is_browser = false;
-
-    /**
-     * Flag for if the user-agent is a robot
-     *
-     * @var bool
-     */
-    protected $is_robot = false;
-
-    /**
-     * Flag for if the user-agent is a mobile browser
-     *
-     * @var bool
-     */
-    protected $is_mobile = false;
-
-    /**
-     * Languages accepted by the current user agent
+     * List of additional operating systems.
      *
      * @var array
      */
-    protected $languages = array();
+    protected static $additionalOperatingSystems = array(
+        'Windows'           => 'Windows',
+        'OS X'              => 'OS X',
+        'Debian'            => 'Debian',
+        'Ubuntu'            => 'Ubuntu',
+        'Macintosh'         => 'PPC',
+        'OpenBSD'           => 'OpenBDS',
+        'Linux'             => 'Linux',
+    );
+
 
     /**
-     * Character sets accepted by the current user agent
+     * List of additional browsers.
      *
      * @var array
      */
-    protected $charsets = array();
+    protected static $additionalBrowsers = array(
+        'Chrome'            => 'Chrome',
+        'Firefox'           => 'Firefox',
+        'Opera'             => 'Opera',
+        'IE'                => 'MSIE|IEMobile|MSIEMobile',
+        'Netscape'          => 'Netscape',
+        'Mozilla'           => 'Mozilla',
+    );
+
 
     /**
-     * List of platforms to compare against current user agent
+     * List of robots
      *
      * @var array
      */
-    protected $platforms = array();
+    protected static $robots = array(
+        'Googlebot'         => 'googlebot',
+        'MSNBot'            => 'msnbot',
+        'Baiduspider'       => 'baiduspider',
+        'Bing'              => 'bingbot',
+        'Yahoo'             => 'yahoo',
+        'Lycos'             => 'lycos',
+    );
+
 
     /**
-     * List of browsers to compare against current user agent
+     * Get all detection rules.
      *
-     * @var array
+     * @return array
      */
-    protected $browsers = array();
-
-    /**
-     * List of mobile browsers to compare against current user agent
-     *
-     * @var array
-     */
-    protected $mobiles = array();
-
-    /**
-     * List of robots to compare against current user agent
-     *
-     * @var array
-     */
-    protected $robots = array();
-
-    /**
-     * Current user-agent platform
-     *
-     * @var string
-     */
-    protected $platform = null;
-
-    /**
-     * Current user-agent browser
-     *
-     * @var string
-     */
-    protected $browser = null;
-
-    /**
-     * Current user-agent version
-     *
-     * @var string
-     */
-    protected $version = null;
-
-    /**
-     * Current user-agent mobile name
-     *
-     * @var string
-     */
-    protected $mobile = null;
-
-    /**
-     * Current user-agent robot name
-     *
-     * @var string
-     */
-    protected $robot = null;
-
-
-    /**
-     * Construct Agent
-     */
-    public function __construct()
+    public function getDetectionRulesExtended()
     {
-        // Get the user agent
-        if (isset($_SERVER['HTTP_USER_AGENT']))
+        static $rules;
+
+        if (!$rules)
         {
-            $this->agent = trim($_SERVER['HTTP_USER_AGENT']);
+            $rules = array_merge(
+                static::$phoneDevices,
+                static::$tabletDevices,
+                static::$operatingSystems,
+                static::$additionalOperatingSystems, // NEW
+                static::$browsers,
+                static::$additionalBrowsers, // NEW
+                static::$utilities
+            );
         }
 
-        // Load the config
-        foreach (array('platforms', 'browsers', 'mobiles', 'robots') as $key)
-        {
-            $this->{$key} = Config::get("agent::$key");
-        }
+        return $rules;
+    }
 
-        // Start building
-        if (!is_null($this->agent))
+
+    /**
+     * Retrieve the current set of rules.
+     *
+     * @return array
+     */
+    public function getRules()
+    {
+        if ($this->detectionType == static::DETECTION_TYPE_EXTENDED)
         {
-            $this->initialize();
+            return static::getDetectionRulesExtended();
+        }
+        else
+        {
+            return static::getMobileDetectionRules();
         }
     }
 
 
     /**
-     * Parse the current user agent
-     * 
-     * @return void
-     */
-    protected function initialize()
+    * Increase the speed by checking if the user agent contains
+    * the key we are looking for before looping all the rules.
+    *
+    * @inherit
+    */
+    protected function matchUAAgainstKey($key, $userAgent = null)
     {
-        $this->_set_platform();
+        // Just check if the user agent contains the word we are looking for
+        if ($this->match($key, $userAgent)) return true;
 
-        foreach (array('_set_robot', '_set_browser', '_set_mobile') as $function)
-        {
-            if ($this->$function() === TRUE)
-            {
-                break;
-            }
-        }
-    }
-
-    /**
-     * Set the Platform
-     *
-     * @return  bool
-     */
-    protected function _set_platform()
-    {
-        if (is_array($this->platforms) && count($this->platforms) > 0)
-        {
-            foreach ($this->platforms as $key => $val)
-            {
-                if (preg_match('|'.preg_quote($key).'|i', $this->agent))
-                {
-                    $this->platform = $val;
-                    return true;
-                }
-            }
-        }
-
-        return false;
+        // Let Mobile_Detect handle stuff
+        return parent::matchUAAgainstKey($key, $userAgent);
     }
 
 
     /**
-     * Set the Browser
+     * Get accept languages.
      *
-     * @return  bool
-     */
-    protected function _set_browser()
-    {
-        if (is_array($this->browsers) && count($this->browsers) > 0)
-        {
-            foreach ($this->browsers as $key => $val)
-            {
-                if (preg_match('|'.preg_quote($key).'.*?([0-9\.]+)|i', $this->agent, $match))
-                {
-                    $this->is_browser = true;
-                    $this->version = $match[1];
-                    $this->browser = $val;
-                    $this->_set_mobile();
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
-
-
-    /**
-     * Set the Robot
-     *
-     * @return  bool
-     */
-    protected function _set_robot()
-    {
-        if (is_array($this->robots) && count($this->robots) > 0)
-        {
-            foreach ($this->robots as $key => $val)
-            {
-                if (preg_match('|'.preg_quote($key).'|i', $this->agent))
-                {
-                    $this->is_robot = true;
-                    $this->robot = $val;
-                    $this->_set_mobile();
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * Set the Mobile Device
-     *
-     * @return  bool
-     */
-    protected function _set_mobile()
-    {
-        if (is_array($this->mobiles) && count($this->mobiles) > 0)
-        {
-            foreach ($this->mobiles as $key => $val)
-            {
-                if (false !== (stripos($this->agent, $key)))
-                {
-                    $this->is_mobile = true;
-                    $this->mobile = $val;
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * Set the accepted languages
-     *
-     * @return  void
-     */
-    protected function _set_languages()
-    {
-        if ((count($this->languages) === 0) && ! empty($_SERVER['HTTP_ACCEPT_LANGUAGE']))
-        {
-            $this->languages = explode(',', preg_replace('/(;q=[0-9\.]+)/i', '', strtolower(trim($_SERVER['HTTP_ACCEPT_LANGUAGE']))));
-        }
-
-        if (count($this->languages) === 0)
-        {
-            $this->languages = array();
-        }
-    }
-
-
-    /**
-     * Set the accepted character sets
-     *
-     * @return  void
-     */
-    protected function _set_charsets()
-    {
-        if ((count($this->charsets) === 0) && ! empty($_SERVER['HTTP_ACCEPT_CHARSET']))
-        {
-            $this->charsets = explode(',', preg_replace('/(;q=.+)/i', '', strtolower(trim($_SERVER['HTTP_ACCEPT_CHARSET']))));
-        }
-
-        if (count($this->charsets) === 0)
-        {
-            $this->charsets = array();
-        }
-    }
-
-
-    /**
-     * Is Browser
-     *
-     * @param   string  $key
-     * @return  bool
-     */
-    public function isBrowser($key = null)
-    {
-        if (!$this->is_browser)
-        {
-            return false;
-        }
-
-        // No need to be specific, it's a browser
-        if ($key === null)
-        {
-            return true;
-        }
-
-        // Check for a specific browser
-        return (isset($this->browsers[$key]) && $this->browser === $this->browsers[$key]);
-    }
-
-
-    /**
-     * Is Robot
-     *
-     * @param   string  $key
-     * @return  bool
-     */
-    public function isRobot($key = null)
-    {
-        if (!$this->is_robot)
-        {
-            return false;
-        }
-
-        // No need to be specific, it's a robot
-        if ($key === null)
-        {
-            return true;
-        }
-
-        // Check for a specific robot
-        return (isset($this->robots[$key]) && $this->robot === $this->robots[$key]);
-    }
-
-
-    /**
-     * Is Mobile
-     *
-     * @param   string  $key
-     * @return  bool
-     */
-    public function isMobile($key = null)
-    {
-        if (!$this->is_mobile)
-        {
-            return false;
-        }
-
-        // No need to be specific, it's a mobile
-        if ($key === null)
-        {
-            return true;
-        }
-
-        // Check for a specific robot
-        return (isset($this->mobiles[$key]) && $this->mobile === $this->mobiles[$key]);
-    }
-
-
-    /**
-     * Agent String
-     *
-     * @return  string
-     */
-    public function agent()
-    {
-        return $this->agent;
-    }
-
-
-    /**
-     * Get Platform
-     *
-     * @return  string
-     */
-    public function platform()
-    {
-        return $this->platform;
-    }
-
-
-    /**
-     * Get Browser Name
-     *
-     * @return  string
-     */
-    public function browser()
-    {
-        return $this->browser;
-    }
-
-
-    /**
-     * Get the Browser Version
-     *
-     * @return  string
-     */
-    public function version()
-    {
-        return $this->version;
-    }
-
-
-    /**
-     * Get The Robot Name
-     *
-     * @return  string
-     */
-    public function robot()
-    {
-        return $this->robot;
-    }
-
-
-    /**
-     * Get the Mobile Device
-     *
-     * @return  string
-     */
-    public function mobile()
-    {
-        return $this->mobile;
-    }
-
-
-    /**
-     * Get the referrer
-     *
-     * @return  bool
-     */
-    public function referrer()
-    {
-        return empty($_SERVER['HTTP_REFERER']) ? '' : trim($_SERVER['HTTP_REFERER']);
-    }
-
-
-    /**
-     * Get the accepted languages
-     *
-     * @return  array
+     * @return array
      */
     public function languages()
     {
-        if (count($this->languages) === 0)
+        $header = $this->getHttpHeader('HTTP_ACCEPT_LANGUAGE');
+
+        if ($header)
         {
-            $this->_set_languages();
+            return explode(',', preg_replace('/(;q=[0-9\.]+)/i', '', strtolower(trim($header))));
         }
 
-        return $this->languages;
+        return array();
     }
 
 
     /**
-     * Get the accepted Character Sets
+     * Get accepted character sets.
      *
-     * @return  array
+     * @return array
      */
     public function charsets()
     {
-        if (count($this->charsets) === 0)
+        $header = $this->getHttpHeader('HTTP_ACCEPT_LANGUAGE');
+
+        if ($header)
         {
-            $this->_set_charsets();
+            return explode(',', preg_replace('/(;q=.+)/i', '', strtolower(trim($header))));
         }
 
-        return $this->charsets;
+        return array();
     }
 
 
     /**
-     * Test for a particular language
-     *
-     * @param   string  $lang
-     * @return  bool
-     */
-    public function acceptLang($lang = 'en')
+    * Match a detection rule and return the key.
+    *
+    * @param  array     $rules
+    * @param  null      $userAgent
+    * @return string
+    */
+    protected function findDetectionRulesAgainstUA(array $rules, $userAgent = null)
     {
-        return in_array(strtolower($lang), $this->languages(), true);
+        // Begin general search.
+        foreach ($rules as $key => $regex)
+        {
+            if (empty($regex)) continue;
+
+            // Check match
+            if ($this->match($regex, $userAgent)) return $key;
+        }
+
+        return false;
     }
 
 
     /**
-     * Test for a particular character set
+     * Get the browser name.
      *
-     * @param   string  $charset
-     * @return  bool
+     * @return string
      */
-    public function acceptCharset($charset = 'utf-8')
+    public function browser($userAgent = null)
     {
-        return in_array(strtolower($charset), $this->charsets(), true);
+        // Get browser rules
+        $rules = array_merge(
+            static::$browsers,
+            static::$additionalBrowsers // NEW
+        );
+
+        return $this->findDetectionRulesAgainstUA($rules, $userAgent);
+    }
+
+    /**
+     * Get the platform name.
+     *
+     * @param  string $userAgent
+     * @return string
+     */
+    public function platform($userAgent = null)
+    {
+        // Get platform rules
+        $rules = array_merge(
+            static::$operatingSystems,
+            static::$additionalOperatingSystems // NEW
+        );
+
+        return $this->findDetectionRulesAgainstUA($rules, $userAgent);
+    }
+
+    /**
+     * Get the device name.
+     *
+     * @param  string $userAgent
+     * @return string
+     */
+    public function device($userAgent = null)
+    {
+        // Get platform rules
+        $rules = array_merge(
+            static::$phoneDevices,
+            static::$tabletDevices,
+            static::$utilities
+        );
+
+        return $this->findDetectionRulesAgainstUA($rules, $userAgent);
+    }
+
+    /**
+     * Check if device is a robot.
+     *
+     * @param  string  $userAgent
+     * @return boolean
+     */
+    public function isRobot($userAgent = null)
+    {
+        // Get bot rules
+        $rules = array_merge(
+            array(static::$utilities['Bot']),
+            static::$robots // NEW
+        );
+
+        foreach ($rules as $regex)
+        {
+            // Check for match
+            if ($this->match($regex, $userAgent)) return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Changing detection type to extended
+     *
+     * @inherit
+     */
+    public function __call($name, $arguments)
+    {
+        //make sure the name starts with 'is', otherwise
+        if (substr($name, 0, 2) != 'is')
+        {
+            throw new BadMethodCallException("No such method exists: $name");
+        }
+
+        $this->setDetectionType(self::DETECTION_TYPE_EXTENDED);
+
+        $key = substr($name, 2);
+
+        return $this->matchUAAgainstKey($key);
     }
 
 }

@@ -1,12 +1,12 @@
 Laravel 4 User Agent
 ====================
 
-A user agent class for Laravel 4, based on the CodeIgniter user agent library.
+A user agent class for Laravel 4, based on [Mobile Detect](https://github.com/serbanghita/Mobile-Detect) with extended functionality.
 
 Installation
 ------------
 
-Add the package to your `composer.json` or install manually.
+Add the package to your composer.json and run `composer update`.
 
 	{
 	    "require": {
@@ -14,119 +14,68 @@ Add the package to your `composer.json` or install manually.
 	    }
 	}
 
-Run composer update to download and install the package.
-
-Add the service provider in `app/config/app.php`:
-
-	'Jenssegers\Agent\AgentServiceProvider',
-
-And add an alias:
+And add the Agent alias to `app/config/app.php`:
 
 	'Agent'            => 'Jenssegers\Agent\Facades\Agent',
 
-Usage
------
+Basic Usage
+-----------
 
-*This documentation is taken from http://ellislab.com/codeigniter/user-guide/libraries/user_agent.html*
+All of the original [Mobile Detect](https://github.com/serbanghita/Mobile-Detect) is still available, check out more examples over at https://github.com/serbanghita/Mobile-Detect/wiki/Code-examples
 
-When the User Agent class is initialized it will attempt to determine whether the user agent browsing your site is a web browser, a mobile device, or a robot. It will also gather the platform information if it is available.
+### Agent::is()
 
-	if (Agent::isBrowser())
-	{
-	    $agent = Agent::browser() . ' ' . Agent::version();
-	}
-	elseif (Agent::isRobot())
-	{
-	    $agent = Agent::robot();
-	}
-	elseif (Agent::isMobile())
-	{
-	    $agent = Agent::mobile();
-	}
-	else
-	{
-	    $agent = 'Unidentified User Agent';
-	}
+Check for a certain property in the user agent.
 
-	echo $agent;
+	Agent::is('Windows');
+	Agent::is('Firefox');
+	Agent::is('iPhone');
+	Agent::is('OS X');
 
-	echo Agent::platform(); // Platform info (Windows, Linux, Mac, etc.)
+### Magic is-method
 
+Magic method that does the same as the previous `is()` method:
 
-### Agent::isBrowser()
+	Agent::isAndroidOS();
+	Agent::isNexus();
+	Agent::isSafari();
 
-Returns TRUE/FALSE (boolean) if the user agent is a known web browser.
+### Mobile detection
 
-	if (Agent::isBrowser('Safari'))
-	{
-	    echo 'You are using Safari.';
-	}
-	else if (Agent::isBrowser())
-	{
-	    echo 'You are using a browser.';
-	}
+Check for mobile device:
 
-### Agent::isMobile()
+	Agent::isMobile();
+	Agent::isTablet();
 
-Returns TRUE/FALSE (boolean) if the user agent is a known mobile device.
+### Match user agent
 
-	if (Agent::isMobile('iphone'))
-	{
-	    $this->load->view('iphone/home');
-	}
-	else if (Agent::isMobile())
-	{
-	    $this->load->view('mobile/home');
-	}
-	else
-	{
-	    $this->load->view('web/home');
-	}
+Search the user agent with a regular expression:
 
-### Agent::isRobot()
+	Agent::match('regexp');
 
-Returns TRUE/FALSE (boolean) if the user agent is a known robot.
+Additional Functionality
+------------------------
 
-### Agent::browser()
+Since the original library was inspired on CodeIgniter, I decided to add some additional functionality:
 
-Returns a string containing the name of the web browser viewing your site.
+### Agent::languages()
 
-### Agent::version()
+Get the browser's accept languages. Example:
 
-Returns a string containing the version number of the web browser viewing your site.
+	['nl-nl', 'nl', 'en-us', 'en']
 
-### Agent::mobile()
+### Agent::device()
 
-Returns a string containing the name of the mobile device viewing your site.
-
-### Agent::robot()
-
-Returns a string containing the name of the robot viewing your site.
+Get the device name, if mobile. (iPhone, Nexus, AsusTablet, ...)
 
 ### Agent::platform()
 
-Returns a string containing the platform viewing your site (Linux, Windows, OS X, etc.).
+Get the operating system. (Ubuntu, Windows, OS X, ...)
 
-### Agent::agent()
+### Agent::browser()
 
-Returns a string containing the full user agent string. Typically it will be something like this:
+Get the browser name. (Chrome, IE, Safari, Firefox, ...)
 
-	Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-US; rv:1.8.0.4) Gecko/20060613 Camino/1.0.2
+### Agent::isRobot()
 
-### Agent::acceptLang()
-
-Lets you determine if the user agent accepts a particular language. Example:
-
-	if (Agent::acceptLang('en'))
-	{
-	    echo 'You accept English!';
-	}
-
-### Agent::acceptCharset()
-
-Lets you determine if the user agent accepts a particular character set. Example:
-
-	if (Agent::acceptCharset('utf-8'))
-	{
-	    echo 'You browser supports UTF-8!';
-	}
+Check if the user is a robot.
