@@ -38,7 +38,7 @@ class Agent extends Mobile_Detect {
 
 
     /**
-     * List of robots
+     * List of robots.
      *
      * @var array
      */
@@ -53,7 +53,8 @@ class Agent extends Mobile_Detect {
 
 
     /**
-     * Get all detection rules.
+     * Get all detection rules. These rules include the additional
+     * platforms and browsers.
      *
      * @return array
      */
@@ -115,7 +116,7 @@ class Agent extends Mobile_Detect {
 
 
     /**
-     * Match a detection rule and return the key.
+     * Match a detection rule and return the matched key.
      *
      * @param  array     $rules
      * @param  null      $userAgent
@@ -123,7 +124,7 @@ class Agent extends Mobile_Detect {
      */
     protected function findDetectionRulesAgainstUA(array $rules, $userAgent = null)
     {
-        // Begin general search.
+        // Loop given rules
         foreach ($rules as $key => $regex)
         {
             if (empty($regex)) continue;
@@ -179,7 +180,7 @@ class Agent extends Mobile_Detect {
      */
     public function device($userAgent = null)
     {
-        // Get platform rules
+        // Get device rules
         $rules = array_merge(
             static::$phoneDevices,
             static::$tabletDevices,
@@ -215,7 +216,7 @@ class Agent extends Mobile_Detect {
 
 
     /**
-     * Changing detection type to extended
+     * Changing detection type to extended.
      *
      * @inherit
      */
