@@ -16,6 +16,10 @@ Add the package to your composer.json and run `composer update`.
 	    }
 	}
 
+Add the service provider in `app/config/app.php`:
+
+	'Jenssegers\Agent\AgentServiceProvider',
+
 And add the Agent alias to `app/config/app.php`:
 
 	'Agent'            => 'Jenssegers\Agent\Facades\Agent',
