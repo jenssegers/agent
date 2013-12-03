@@ -16,7 +16,7 @@ class Agent extends Mobile_Detect {
         'Debian'            => 'Debian',
         'Ubuntu'            => 'Ubuntu',
         'Macintosh'         => 'PPC',
-        'OpenBSD'           => 'OpenBDS',
+        'OpenBSD'           => 'OpenBSD',
         'Linux'             => 'Linux',
     );
 
