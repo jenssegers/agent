@@ -18,6 +18,5 @@
         "psr-0": {
             "Jenssegers\\Agent": "src/"
         }
-    },
-    "minimum-stability": "dev"
+    }
 }
