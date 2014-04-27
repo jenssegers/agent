@@ -1,5 +1,7 @@
-Laravel 4 User Agent [![Build Status](https://travis-ci.org/jenssegers/Laravel-Agent.png?branch=master)](https://travis-ci.org/jenssegers/Laravel-Agent)
+Laravel 4 User Agent
 ====================
+
+[![Build Status](https://travis-ci.org/jenssegers/Laravel-Agent.png?branch=master)](https://travis-ci.org/jenssegers/Laravel-Agent) [![Coverage Status](https://coveralls.io/repos/jenssegers/Laravel-Agent/badge.png)](https://coveralls.io/r/jenssegers/Laravel-Agent)
 
 A user agent class for Laravel 4, based on [Mobile Detect](https://github.com/serbanghita/Mobile-Detect) with extended functionality.
 
