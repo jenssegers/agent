@@ -97,11 +97,14 @@ Check if the user is a robot.
 
 	Agent::isRobot();
 
-### Browser version
+### Browser/platform version
 
-MobileDetect recently added a `version` method that can get the version number for components. To get the browser version you can use:
+MobileDetect recently added a `version` method that can get the version number for components. To get the browser or platform version you can use:
 
 	$browser = Agent::browser();
 	$version = Agent::version($browser);
+
+	$platform = Agent::platform();
+	$version = Agent::version($platform);
 
 *Note, the version method is still in beta, so it might not return the correct result.*
