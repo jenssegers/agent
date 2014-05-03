@@ -15,8 +15,8 @@
         "mobiledetect/mobiledetectlib": "*"
     },
     "autoload": {
-        "psr-0": {
-            "Jenssegers\\Agent": "src/"
+        "psr-4": {
+            "Jenssegers\\Agent\\": "src/"
         }
     }
 }
