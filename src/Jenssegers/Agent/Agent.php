@@ -12,6 +12,7 @@ class Agent extends Mobile_Detect {
      */
     protected static $additionalOperatingSystems = array(
         'Windows'           => 'Windows',
+        'Windows NT'        => 'Windows NT',
         'OS X'              => 'OS X',
         'Debian'            => 'Debian',
         'Ubuntu'            => 'Ubuntu',
@@ -36,6 +37,25 @@ class Agent extends Mobile_Detect {
         'Mozilla'           => 'Mozilla',
     );
 
+    /**
+     * List of additional browsers.
+     *
+     * @var array
+     */
+    protected static $additionalProperties = array(
+
+        // Operating systems
+        'Windows'           => 'Windows NT [VER]',
+        'Windows NT'        => 'Windows NT [VER]',
+        'OS X'              => 'OS X [VER]',
+        'BlackBerryOS'      => array('BlackBerry[\w]+/[VER]', 'BlackBerry.*Version/[VER]', 'Version/[VER]'),
+        'AndroidOS'         => 'Android [VER]',
+
+        // Browsers
+        'Opera'             => array(' OPR/[VER]', 'Opera Mini/[VER]', 'Version/[VER]', 'Opera [VER]'),
+        'Netscape'          => 'Netscape/[VER]',
+        'Mozilla'           => 'rv:[VER]',
+    );
 
     /**
      * List of robots.
@@ -215,6 +235,24 @@ class Agent extends Mobile_Detect {
         }
 
         return false;
+    }
+
+    /**
+     * Check the version of the given property in the User-Agent.
+     *
+     * @inherit
+     */
+    public function version($propertyName, $type = self::VERSION_TYPE_STRING)
+    {
+        $check = key(static::$additionalProperties);
+
+        // Check if the additional properties have been added already
+        if ( ! array_key_exists($check, parent::$properties))
+        {
+            parent::$properties = array_merge(parent::$properties, static::$additionalProperties);
+        }
+
+        return parent::version($propertyName, $type);
     }
 
 
