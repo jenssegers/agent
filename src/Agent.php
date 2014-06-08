@@ -32,7 +32,7 @@ class Agent extends Mobile_Detect {
         'Firefox'           => 'Firefox',
         'Safari'            => 'Safari',
         'Opera'             => 'Opera',
-        'IE'                => 'MSIE|IEMobile|MSIEMobile',
+        'IE'                => 'MSIE|IEMobile|MSIEMobile|Trident/[.0-9]+',
         'Netscape'          => 'Netscape',
         'Mozilla'           => 'Mozilla',
     );
@@ -55,6 +55,7 @@ class Agent extends Mobile_Detect {
         'Opera'             => array(' OPR/[VER]', 'Opera Mini/[VER]', 'Version/[VER]', 'Opera [VER]'),
         'Netscape'          => 'Netscape/[VER]',
         'Mozilla'           => 'rv:[VER]',
+        'IE'                => array('IEMobile/[VER];', 'IEMobile [VER]', 'MSIE [VER];', 'rv:[VER]')
     );
 
     /**

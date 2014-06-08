@@ -13,7 +13,6 @@
     <testsuites>
         <testsuite name="all">
             <directory>tests/</directory>
-            <directory>vendor/mobiledetect/mobiledetectlib/tests</directory>
         </testsuite>
     </testsuites>
 </phpunit>
