@@ -28,7 +28,7 @@ class AgentServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-        $this->app->bindShared('agent', function($app)
+        $this->app['agent'] = $this->app->share(function($app)
         {
             return new Agent;
         });
