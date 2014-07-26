@@ -11,8 +11,8 @@
     "license" : "MIT",
     "require": {
         "php": ">=5.3.0",
-        "illuminate/support": "~4.0",
-        "mobiledetect/mobiledetectlib": "*"
+        "illuminate/support": "4.*",
+        "mobiledetect/mobiledetectlib": "2.*"
     },
     "require-dev": {
         "satooshi/php-coveralls": "*"
