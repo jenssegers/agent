@@ -14,6 +14,9 @@
         "illuminate/support": "~4.0",
         "mobiledetect/mobiledetectlib": "*"
     },
+    "require-dev": {
+        "satooshi/php-coveralls": "*"
+    },
     "autoload": {
         "psr-4": {
             "Jenssegers\\Agent\\": "src/"
