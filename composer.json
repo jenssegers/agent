@@ -1,6 +1,6 @@
 {
     "name": "jenssegers/agent",
-    "description": "A user agent class for Laravel 4",
+    "description": "A user agent class for Laravel 4+",
     "keywords": ["laravel","useragent","agent","user agent","browser","platform","mobile"],
     "authors": [
         {
@@ -11,7 +11,7 @@
     "license" : "MIT",
     "require": {
         "php": ">=5.3.0",
-        "illuminate/support": "4.*",
+        "illuminate/support": "4.*|5.*",
         "mobiledetect/mobiledetectlib": "2.*"
     },
     "require-dev": {
