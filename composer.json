@@ -1,6 +1,6 @@
 {
     "name": "jenssegers/agent",
-    "description": "A user agent class for Laravel 4+",
+    "description": "A user agent class for Laravel",
     "keywords": ["laravel","useragent","agent","user agent","browser","platform","mobile"],
     "authors": [
         {
