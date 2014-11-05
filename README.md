@@ -10,13 +10,9 @@ A user agent class for Laravel, based on [Mobile Detect](https://github.com/serb
 Installation
 ------------
 
-Add the package to your composer.json and run `composer update`.
+Install using composer:
 
-	{
-	    "require": {
-	        "jenssegers/agent": "*"
-	    }
-	}
+	composer require jenssegers/agent
 
 Add the service provider in `app/config/app.php`:
 
