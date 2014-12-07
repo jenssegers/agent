@@ -87,6 +87,14 @@ Get the browser name. (Chrome, IE, Safari, Firefox, ...)
 
 	Agent::browser();
 
+### Desktop detection
+
+Check if the user is a desktop.
+
+	Agent::isDesktop();
+
+*This checks if a user is not a mobile device, tablet or robot.*
+
 ### Robot detection
 
 Check if the user is a robot.
