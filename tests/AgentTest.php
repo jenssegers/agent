@@ -4,7 +4,6 @@ use Jenssegers\Agent\Agent;
 
 class AgentTest extends PHPUnit_Framework_TestCase {
 
-    // Some operating systems
     private $operatingSystems = array(
         'Windows' => 'Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko',
         'OS X' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/537.13+ (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2',
@@ -14,7 +13,6 @@ class AgentTest extends PHPUnit_Framework_TestCase {
         'AndroidOS' => 'Mozilla/5.0 (Linux; U; Android 2.2; en-us; Nexus One Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1',
     );
 
-    // Some browsers
     private $browsers = array(
         'IE' => 'Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko',
         'Safari' => 'Mozilla/5.0 (iPad; CPU OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5355d Safari/8536.25',
@@ -25,7 +23,6 @@ class AgentTest extends PHPUnit_Framework_TestCase {
         'Opera' => 'Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14',
     );
 
-    // Some robots
     private $robots = array(
         'Google' => 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
         'Facebook' => 'facebookexternalhit/1.1 (+http(s)://www.facebook.com/externalhit_uatext.php)',
@@ -59,6 +56,17 @@ class AgentTest extends PHPUnit_Framework_TestCase {
         '5_1' => 'Mozilla/5.0 (iPad; CPU OS 5_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko ) Version/5.1 Mobile/9B176 Safari/7534.48.3',
         '7.1.0.346' => 'Mozilla/5.0 (BlackBerry; U; BlackBerry 9900; en) AppleWebKit/534.11+ (KHTML, like Gecko) Version/7.1.0.346 Mobile Safari/534.11+',
         '2.2' => 'Mozilla/5.0 (Linux; U; Android 2.2; en-us; Nexus One Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1',
+    );
+
+    private $desktops = array(
+        'Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko',
+        'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:24.0) Gecko/20100101 Firefox/24.0',
+        'Mozilla/5.0 (Windows; U; Win 9x 4.90; SG; rv:1.9.2.4) Gecko/20101104 Netscape/9.1.0285',
+        'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0',
+        'Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1667.0 Safari/537.36',
+        'Mozilla/5.0 (Windows; U; Windows NT 6.1; rv:2.2) Gecko/20110201',
+        'Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14',
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/537.13+ (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2',
     );
 
     public function testLanguages()
@@ -152,6 +160,29 @@ class AgentTest extends PHPUnit_Framework_TestCase {
             $agent->setUserAgent($ua);
             $platform = $agent->platform();
             $this->assertEquals($version, $agent->version($platform));
+        }
+    }
+
+    public function testDesktop()
+    {
+        $agent = new Agent;
+
+        foreach($this->desktops as $ua)
+        {
+            $agent->setUserAgent($ua);
+            $this->assertTrue($agent->isDesktop());
+        }
+
+        foreach($this->robots as $ua)
+        {
+            $agent->setUserAgent($ua);
+            $this->assertFalse($agent->isDesktop());
+        }
+
+        foreach($this->devices as $ua)
+        {
+            $agent->setUserAgent($ua);
+            $this->assertFalse($agent->isDesktop());
         }
     }
 

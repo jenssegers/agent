@@ -27,7 +27,7 @@ class UserAgentTestExtended extends UserAgentTest
         $this->assertEquals($md->isMobile(), $isMobile);
 
         //is tablet?
-        $this->assertEquals($md->isTablet(), $isTablet);
+        $this->assertEquals($md->isTablet(), $isTablet, 'FAILED: ' . $userAgent . ' isTablet: ' . $isTablet);
 
         if (isset($version)) {
             foreach ($version as $condition => $assertion) {

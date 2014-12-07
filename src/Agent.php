@@ -216,6 +216,19 @@ class Agent extends Mobile_Detect {
 
 
     /**
+     * Check if the device is a desktop computer.
+     *
+     * @param  string $userAgent   deprecated
+     * @param  array  $httpHeaders deprecated
+     * @return bool
+     */
+    public function isDesktop($userAgent = null, $httpHeaders = null)
+    {
+        return (! $this->isMobile() && ! $this->isTablet() && ! $this->isRobot());
+    }
+
+
+    /**
      * Check if device is a robot.
      *
      * @param  string  $userAgent
