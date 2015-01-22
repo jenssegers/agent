@@ -18,7 +18,7 @@ class AgentServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
-        $this->package('jenssegers/agent');
+        //
     }
 
     /**
