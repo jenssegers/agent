@@ -21,7 +21,6 @@ class Agent extends Mobile_Detect {
         'Linux'             => 'Linux',
     );
 
-
     /**
      * List of additional browsers.
      *
@@ -72,7 +71,6 @@ class Agent extends Mobile_Detect {
         'Lycos'             => 'lycos',
     );
 
-
     /**
      * Get all detection rules. These rules include the additional
      * platforms and browsers.
@@ -99,7 +97,6 @@ class Agent extends Mobile_Detect {
         return $rules;
     }
 
-
     /**
      * Retrieve the current set of rules.
      *
@@ -116,7 +113,6 @@ class Agent extends Mobile_Detect {
             return static::getMobileDetectionRules();
         }
     }
-
 
     /**
      * Get accept languages.
@@ -137,7 +133,6 @@ class Agent extends Mobile_Detect {
 
         return array();
     }
-
 
     /**
      * Match a detection rule and return the matched key.
@@ -160,7 +155,6 @@ class Agent extends Mobile_Detect {
         return false;
     }
 
-
     /**
      * Get the browser name.
      *
@@ -179,7 +173,6 @@ class Agent extends Mobile_Detect {
         return $this->findDetectionRulesAgainstUA($rules, $userAgent);
     }
 
-
     /**
      * Get the platform name.
      *
@@ -196,7 +189,6 @@ class Agent extends Mobile_Detect {
 
         return $this->findDetectionRulesAgainstUA($rules, $userAgent);
     }
-
 
     /**
      * Get the device name.
@@ -215,7 +207,6 @@ class Agent extends Mobile_Detect {
 
         return $this->findDetectionRulesAgainstUA($rules, $userAgent);
     }
-
 
     /**
      * Check if the device is a desktop computer.
