@@ -13,7 +13,7 @@ class Agent extends Mobile_Detect {
     protected static $additionalOperatingSystems = array(
         'Windows'           => 'Windows',
         'Windows NT'        => 'Windows NT',
-        'OS X'              => 'OS X',
+        'OS X'              => 'Mac OS X',
         'Debian'            => 'Debian',
         'Ubuntu'            => 'Ubuntu',
         'Macintosh'         => 'PPC',
@@ -28,10 +28,10 @@ class Agent extends Mobile_Detect {
      * @var array
      */
     protected static $additionalBrowsers = array(
+        'Opera'             => 'Opera|OPR',
         'Chrome'            => 'Chrome',
         'Firefox'           => 'Firefox',
         'Safari'            => 'Safari',
-        'Opera'             => 'Opera',
         'IE'                => 'MSIE|IEMobile|MSIEMobile|Trident/[.0-9]+',
         'Netscape'          => 'Netscape',
         'Mozilla'           => 'Mozilla',
@@ -85,7 +85,7 @@ class Agent extends Mobile_Detect {
 
         if (!$rules)
         {
-            $rules = array_merge(
+            $rules = $this->mergeRules(
                 static::$phoneDevices,
                 static::$tabletDevices,
                 static::$operatingSystems,
@@ -169,9 +169,11 @@ class Agent extends Mobile_Detect {
     public function browser($userAgent = null)
     {
         // Get browser rules
-        $rules = array_merge(
-            static::$browsers,
-            static::$additionalBrowsers // NEW
+        // Here we need to test for the additional browser first, otherwise
+        // MobileDetect will mostly detect Chrome as the browser.
+        $rules = $this->mergeRules(
+            static::$additionalBrowsers, // NEW
+            static::$browsers
         );
 
         return $this->findDetectionRulesAgainstUA($rules, $userAgent);
@@ -187,7 +189,7 @@ class Agent extends Mobile_Detect {
     public function platform($userAgent = null)
     {
         // Get platform rules
-        $rules = array_merge(
+        $rules = $this->mergeRules(
             static::$operatingSystems,
             static::$additionalOperatingSystems // NEW
         );
@@ -205,7 +207,7 @@ class Agent extends Mobile_Detect {
     public function device($userAgent = null)
     {
         // Get device rules
-        $rules = array_merge(
+        $rules = $this->mergeRules(
             static::$phoneDevices,
             static::$tabletDevices,
             static::$utilities
@@ -227,7 +229,6 @@ class Agent extends Mobile_Detect {
         return (! $this->isMobile() && ! $this->isTablet() && ! $this->isRobot());
     }
 
-
     /**
      * Check if device is a robot.
      *
@@ -237,7 +238,7 @@ class Agent extends Mobile_Detect {
     public function isRobot($userAgent = null)
     {
         // Get bot rules
-        $rules = array_merge(
+        $rules = $this->mergeRules(
             array(static::$utilities['Bot']),
             static::$robots // NEW
         );
@@ -263,12 +264,49 @@ class Agent extends Mobile_Detect {
         // Check if the additional properties have been added already
         if ( ! array_key_exists($check, parent::$properties))
         {
-            parent::$properties = array_merge(parent::$properties, static::$additionalProperties);
+            // TODO: why is mergeRules not working here?
+            parent::$properties = array_merge(
+                parent::$properties,
+                static::$additionalProperties
+            );
         }
 
         return parent::version($propertyName, $type);
     }
 
+    /**
+     * Merge multiple rules into one array.
+     *
+     * @return array
+     */
+    protected function mergeRules()
+    {
+        $merged = [];
+
+        foreach (func_get_args() as $rules)
+        {
+            foreach ($rules as $key => $value)
+            {
+                if (empty($merged[$key]))
+                {
+                    $merged[$key] = $value;
+                }
+                else
+                {
+                    if (is_array($merged[$key]))
+                    {
+                        $merged[$key][] = $value;
+                    }
+                    else
+                    {
+                        $merged[$key] .= '|' . $value;
+                    }
+                }
+            }
+        }
+
+        return $merged;
+    }
 
     /**
      * Changing detection type to extended.
