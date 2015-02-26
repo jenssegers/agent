@@ -272,7 +272,7 @@ class Agent extends Mobile_Detect {
      */
     protected function mergeRules()
     {
-        $merged = [];
+        $merged = array();
 
         foreach (func_get_args() as $rules)
         {
