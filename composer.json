@@ -2,13 +2,13 @@
     "name": "jenssegers/agent",
     "description": "A user agent class for Laravel",
     "keywords": ["laravel","useragent","agent","user agent","browser","platform","mobile"],
+    "license" : "MIT",
     "authors": [
         {
             "name": "Jens Segers",
             "homepage": "http://jenssegers.be"
         }
     ],
-    "license" : "MIT",
     "require": {
         "php": ">=5.3.0",
         "illuminate/support": "4.*|5.*",
