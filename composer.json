@@ -1,7 +1,7 @@
 {
     "name": "jenssegers/agent",
     "description": "A user agent class for Laravel",
-    "keywords": ["laravel","useragent","agent","user agent","browser","platform","mobile"],
+    "keywords": ["laravel", "useragent", "agent", "user agent", "browser", "platform", "mobile"],
     "authors": [
         {
             "name": "Jens Segers",
@@ -11,15 +11,22 @@
     "license" : "MIT",
     "require": {
         "php": ">=5.3.0",
-        "illuminate/support": "4.*|5.*",
-        "mobiledetect/mobiledetectlib": "2.*"
+        "illuminate/support": "~4.0|~5.0",
+        "mobiledetect/mobiledetectlib": "2.0"
     },
     "require-dev": {
-        "satooshi/php-coveralls": "*"
+        "satooshi/php-coveralls": "0.6.*"
     },
     "autoload": {
         "psr-4": {
             "Jenssegers\\Agent\\": "src/"
         }
-    }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "3.0-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
