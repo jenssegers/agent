@@ -112,3 +112,7 @@ MobileDetect recently added a `version` method that can get the version number f
 	$version = Agent::version($platform);
 
 *Note, the version method is still in beta, so it might not return the correct result.*
+
+## License
+
+Laravel User Agent is licensed under [The MIT License (MIT)](LICENSE).
