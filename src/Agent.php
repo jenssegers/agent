@@ -54,7 +54,7 @@ class Agent extends Mobile_Detect {
         'Opera'             => array(' OPR/[VER]', 'Opera Mini/[VER]', 'Version/[VER]', 'Opera [VER]'),
         'Netscape'          => 'Netscape/[VER]',
         'Mozilla'           => 'rv:[VER]',
-        'IE'                => array('IEMobile/[VER];', 'IEMobile [VER]', 'MSIE [VER];', 'rv:[VER]')
+        'IE'                => array('IEMobile/[VER];', 'IEMobile [VER]', 'MSIE [VER];', 'rv:[VER]'),
     );
 
     /**
@@ -137,8 +137,8 @@ class Agent extends Mobile_Detect {
     /**
      * Match a detection rule and return the matched key.
      *
-     * @param  array     $rules
-     * @param  null      $userAgent
+     * @param  array  $rules
+     * @param  null   $userAgent
      * @return string
      */
     protected function findDetectionRulesAgainstUA(array $rules, $userAgent = null)
