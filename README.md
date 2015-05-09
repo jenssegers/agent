@@ -5,8 +5,6 @@ Laravel User Agent
 
 A user agent class for Laravel, based on [Mobile Detect](https://github.com/serbanghita/Mobile-Detect) with extended functionality.
 
-*The previous version is still available under the 1.0.0 tag.*
-
 Installation
 ------------
 
@@ -107,7 +105,7 @@ Get the browser name. (Chrome, IE, Safari, Firefox, ...)
 ```php
 Agent::browser();
 ```
-	
+
 ### Desktop detection
 
 Check if the user is a desktop.
