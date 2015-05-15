@@ -19,6 +19,7 @@ class Agent extends Mobile_Detect {
         'Macintosh'         => 'PPC',
         'OpenBSD'           => 'OpenBSD',
         'Linux'             => 'Linux',
+        'ChromeOS'          => 'CrOS',
     );
 
     /**
@@ -49,6 +50,7 @@ class Agent extends Mobile_Detect {
         'OS X'              => 'OS X [VER]',
         'BlackBerryOS'      => array('BlackBerry[\w]+/[VER]', 'BlackBerry.*Version/[VER]', 'Version/[VER]'),
         'AndroidOS'         => 'Android [VER]',
+        'ChromeOS'          => 'CrOS x86_64 [VER]',
 
         // Browsers
         'Opera'             => array(' OPR/[VER]', 'Opera Mini/[VER]', 'Version/[VER]', 'Opera [VER]'),
