@@ -1,9 +1,13 @@
-User Agent
-==========
+Agent
+=====
 
-[![Latest Stable Version](http://img.shields.io/github/release/jenssegers/laravel-agent.svg)](https://packagist.org/packages/jenssegers/agent) [![Total Downloads](http://img.shields.io/packagist/dm/jenssegers/agent.svg)](https://packagist.org/packages/jenssegers/agent) [![Build Status](http://img.shields.io/travis/jenssegers/laravel-agent.svg)](https://travis-ci.org/jenssegers/laravel-agent) [![Coverage Status](http://img.shields.io/coveralls/jenssegers/laravel-agent.svg)](https://coveralls.io/r/jenssegers/laravel-agent)
+[![Latest Stable Version](http://img.shields.io/github/release/jenssegers/agent.svg)](https://packagist.org/packages/jenssegers/agent) [![Total Downloads](http://img.shields.io/packagist/dm/jenssegers/agent.svg)](https://packagist.org/packages/jenssegers/agent) [![Build Status](http://img.shields.io/travis/jenssegers/agent.svg)](https://travis-ci.org/jenssegers/agent) [![Coverage Status](http://img.shields.io/coveralls/jenssegers/agent.svg)](https://coveralls.io/r/jenssegers/agent)
 
-A desktop and mobile user agent parser for PHP, based on [Mobile Detect](https://github.com/serbanghita/Mobile-Detect) with extended functionality.
+A PHP desktop/mobile user agent parser with support for Laravel, based on [Mobile Detect](https://github.com/serbanghita/Mobile-Detect) with extended functionality.
+
+<p align="center">
+<img src="http://jenssegers.be/uploads/images/agent.png">
+</p>
 
 Installation
 ------------
@@ -14,6 +18,9 @@ Install using composer:
 composer require jenssegers/agent
 ```
 
+Laravel (optional)
+------------------
+
 Add the service provider in `app/config/app.php`:
 
 ```php
@@ -21,6 +28,7 @@ Add the service provider in `app/config/app.php`:
 ```
 
 And add the Agent alias to `app/config/app.php`:
+
 ```php
 'Agent' => 'Jenssegers\Agent\Facades\Agent',
 ```
@@ -28,17 +36,32 @@ And add the Agent alias to `app/config/app.php`:
 Basic Usage
 -----------
 
-All of the original [Mobile Detect](https://github.com/serbanghita/Mobile-Detect) functionality is still available, check out more examples over at https://github.com/serbanghita/Mobile-Detect/wiki/Code-examples
+Start by creating an `Agent` instance (or use the `Agent` Facade if you are using Laravel):
+
+```php
+use Jenssegers\Agent\Agent;
+
+$agent = new Agent();
+```
+
+If you want to parse user agents other than the current request in CLI scripts for example, you can use the `setUserAgent` and `setHttpHeaders` methods:
+
+```php
+$agent->setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/537.13+ (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2');
+$agent->setHttpHeaders($headers);
+```
+
+All of the original [Mobile Detect](https://github.com/serbanghita/Mobile-Detect) methods are still available, check out some original examples at https://github.com/serbanghita/Mobile-Detect/wiki/Code-examples
 
 ### Is?
 
 Check for a certain property in the user agent.
 
 ```php
-Agent::is('Windows');
-Agent::is('Firefox');
-Agent::is('iPhone');
-Agent::is('OS X');
+$agent->is('Windows');
+$agent->is('Firefox');
+$agent->is('iPhone');
+$agent->is('OS X');
 ```
 
 ### Magic is-method
@@ -46,9 +69,9 @@ Agent::is('OS X');
 Magic method that does the same as the previous `is()` method:
 
 ```php
-Agent::isAndroidOS();
-Agent::isNexus();
-Agent::isSafari();
+$agent->isAndroidOS();
+$agent->isNexus();
+$agent->isSafari();
 ```
 
 ### Mobile detection
@@ -56,8 +79,8 @@ Agent::isSafari();
 Check for mobile device:
 
 ```php
-Agent::isMobile();
-Agent::isTablet();
+$agent->isMobile();
+$agent->isTablet();
 ```
 
 ### Match user agent
@@ -65,20 +88,18 @@ Agent::isTablet();
 Search the user agent with a regular expression:
 
 ```php
-Agent::match('regexp');
+$agent->match('regexp');
 ```
 
 Additional Functionality
 ------------------------
-
-Since the original library was inspired on CodeIgniter, I decided to add some additional functionality:
 
 ### Accept languages
 
 Get the browser's accept languages. Example:
 
 ```php
-$languages = Agent::languages();
+$languages = $agent->languages();
 // ['nl-nl', 'nl', 'en-us', 'en']
 ```
 
@@ -87,7 +108,7 @@ $languages = Agent::languages();
 Get the device name, if mobile. (iPhone, Nexus, AsusTablet, ...)
 
 ```php
-Agent::device();
+$agent->device();
 ```
 
 ### Operating system name
@@ -95,7 +116,7 @@ Agent::device();
 Get the operating system. (Ubuntu, Windows, OS X, ...)
 
 ```php
-Agent::platform();
+$agent->platform();
 ```
 
 ### Browser name
@@ -103,7 +124,7 @@ Agent::platform();
 Get the browser name. (Chrome, IE, Safari, Firefox, ...)
 
 ```php
-Agent::browser();
+$agent->browser();
 ```
 
 ### Desktop detection
@@ -111,7 +132,7 @@ Agent::browser();
 Check if the user is a desktop.
 
 ```php
-Agent::isDesktop();
+$agent->isDesktop();
 ```
 
 *This checks if a user is not a mobile device, tablet or robot.*
@@ -121,7 +142,7 @@ Agent::isDesktop();
 Check if the user is a robot.
 
 ```php
-Agent::isRobot();
+$agent->isRobot();
 ```
 
 ### Browser/platform version
@@ -129,11 +150,11 @@ Agent::isRobot();
 MobileDetect recently added a `version` method that can get the version number for components. To get the browser or platform version you can use:
 
 ```php
-$browser = Agent::browser();
-$version = Agent::version($browser);
+$browser = $agent->browser();
+$version = $agent->version($browser);
 
-$platform = Agent::platform();
-$version = Agent::version($platform);
+$platform = $agent->platform();
+$version = $agent->version($platform);
 ```
 
 *Note, the version method is still in beta, so it might not return the correct result.*

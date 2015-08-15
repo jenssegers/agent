@@ -9,6 +9,9 @@ class Agent extends Facade {
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'agent'; }
+    protected static function getFacadeAccessor()
+    {
+    	return 'agent';
+    }
 
 }

@@ -10,7 +10,7 @@ class Agent extends Mobile_Detect {
      *
      * @var array
      */
-    protected static $additionalOperatingSystems = array(
+    protected static $additionalOperatingSystems = [
         'Windows'           => 'Windows',
         'Windows NT'        => 'Windows NT',
         'OS X'              => 'Mac OS X',
@@ -20,14 +20,14 @@ class Agent extends Mobile_Detect {
         'OpenBSD'           => 'OpenBSD',
         'Linux'             => 'Linux',
         'ChromeOS'          => 'CrOS',
-    );
+    ];
 
     /**
      * List of additional browsers.
      *
      * @var array
      */
-    protected static $additionalBrowsers = array(
+    protected static $additionalBrowsers = [
         'Opera'             => 'Opera|OPR',
         'Chrome'            => 'Chrome',
         'Firefox'           => 'Firefox',
@@ -35,43 +35,43 @@ class Agent extends Mobile_Detect {
         'IE'                => 'MSIE|IEMobile|MSIEMobile|Trident/[.0-9]+',
         'Netscape'          => 'Netscape',
         'Mozilla'           => 'Mozilla',
-    );
+    ];
 
     /**
      * List of additional browsers.
      *
      * @var array
      */
-    protected static $additionalProperties = array(
+    protected static $additionalProperties = [
 
         // Operating systems
         'Windows'           => 'Windows NT [VER]',
         'Windows NT'        => 'Windows NT [VER]',
         'OS X'              => 'OS X [VER]',
-        'BlackBerryOS'      => array('BlackBerry[\w]+/[VER]', 'BlackBerry.*Version/[VER]', 'Version/[VER]'),
+        'BlackBerryOS'      => ['BlackBerry[\w]+/[VER]', 'BlackBerry.*Version/[VER]', 'Version/[VER]'],
         'AndroidOS'         => 'Android [VER]',
         'ChromeOS'          => 'CrOS x86_64 [VER]',
 
         // Browsers
-        'Opera'             => array(' OPR/[VER]', 'Opera Mini/[VER]', 'Version/[VER]', 'Opera [VER]'),
+        'Opera'             => [' OPR/[VER]', 'Opera Mini/[VER]', 'Version/[VER]', 'Opera [VER]'],
         'Netscape'          => 'Netscape/[VER]',
         'Mozilla'           => 'rv:[VER]',
-        'IE'                => array('IEMobile/[VER];', 'IEMobile [VER]', 'MSIE [VER];', 'rv:[VER]'),
-    );
+        'IE'                => ['IEMobile/[VER];', 'IEMobile [VER]', 'MSIE [VER];', 'rv:[VER]'],
+    ];
 
     /**
      * List of robots.
      *
      * @var array
      */
-    protected static $robots = array(
+    protected static $robots = [
         'Googlebot'         => 'googlebot',
         'MSNBot'            => 'msnbot',
         'Baiduspider'       => 'baiduspider',
         'Bing'              => 'bingbot',
         'Yahoo'             => 'yahoo',
         'Lycos'             => 'lycos',
-    );
+    ];
 
     /**
      * Get all detection rules. These rules include the additional
@@ -133,7 +133,7 @@ class Agent extends Mobile_Detect {
             return explode(',', preg_replace('/(;q=[0-9\.]+)/i', '', strtolower(trim($acceptLanguage))));
         }
 
-        return array();
+        return [];
     }
 
     /**
@@ -226,13 +226,13 @@ class Agent extends Mobile_Detect {
      * Check if device is a robot.
      *
      * @param  string  $userAgent
-     * @return boolean
+     * @return bool
      */
     public function isRobot($userAgent = null)
     {
         // Get bot rules
         $rules = $this->mergeRules(
-            array(static::$utilities['Bot']),
+            [static::$utilities['Bot']],
             static::$robots // NEW
         );
 
@@ -274,7 +274,7 @@ class Agent extends Mobile_Detect {
      */
     protected function mergeRules()
     {
-        $merged = array();
+        $merged = [];
 
         foreach (func_get_args() as $rules)
         {
