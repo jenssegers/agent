@@ -1,5 +1,5 @@
 User Agent
-==================
+==========
 
 [![Latest Stable Version](http://img.shields.io/github/release/jenssegers/laravel-agent.svg)](https://packagist.org/packages/jenssegers/agent) [![Total Downloads](http://img.shields.io/packagist/dm/jenssegers/agent.svg)](https://packagist.org/packages/jenssegers/agent) [![Build Status](http://img.shields.io/travis/jenssegers/laravel-agent.svg)](https://travis-ci.org/jenssegers/laravel-agent) [![Coverage Status](http://img.shields.io/coveralls/jenssegers/laravel-agent.svg)](https://coveralls.io/r/jenssegers/laravel-agent)
 
