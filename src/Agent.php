@@ -223,7 +223,7 @@ class Agent extends Mobile_Detect {
         return (! $this->isMobile() && ! $this->isTablet() && ! $this->isRobot());
     }
 
-     /**
+    /**
      * Get the robot name.
      *
      * @param  string $userAgent
