@@ -47,15 +47,15 @@ class Agent extends Mobile_Detect {
         'Windows'           => 'Windows NT [VER]',
         'Windows NT'        => 'Windows NT [VER]',
         'OS X'              => 'OS X [VER]',
-        'BlackBerryOS'      => ['BlackBerry[\w]+/[VER]', 'BlackBerry.*Version/[VER]', 'Version/[VER]'],
+        'BlackBerryOS'      => array('BlackBerry[\w]+/[VER]', 'BlackBerry.*Version/[VER]', 'Version/[VER]'),
         'AndroidOS'         => 'Android [VER]',
         'ChromeOS'          => 'CrOS x86_64 [VER]',
 
         // Browsers
-        'Opera'             => [' OPR/[VER]', 'Opera Mini/[VER]', 'Version/[VER]', 'Opera [VER]'],
+        'Opera'             => array(' OPR/[VER]', 'Opera Mini/[VER]', 'Version/[VER]', 'Opera [VER]'),
         'Netscape'          => 'Netscape/[VER]',
         'Mozilla'           => 'rv:[VER]',
-        'IE'                => ['IEMobile/[VER];', 'IEMobile [VER]', 'MSIE [VER];', 'rv:[VER]'],
+        'IE'                => array('IEMobile/[VER];', 'IEMobile [VER]', 'MSIE [VER];', 'rv:[VER]'),
     );
 
     /**
