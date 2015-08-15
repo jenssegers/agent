@@ -108,7 +108,7 @@ $languages = $agent->languages();
 Get the device name, if mobile. (iPhone, Nexus, AsusTablet, ...)
 
 ```php
-$agent->device();
+$device = $agent->device();
 ```
 
 ### Operating system name
@@ -116,7 +116,7 @@ $agent->device();
 Get the operating system. (Ubuntu, Windows, OS X, ...)
 
 ```php
-$agent->platform();
+$agent = $agent->platform();
 ```
 
 ### Browser name
@@ -124,7 +124,7 @@ $agent->platform();
 Get the browser name. (Chrome, IE, Safari, Firefox, ...)
 
 ```php
-$agent->browser();
+$browser = $agent->browser();
 ```
 
 ### Desktop detection
@@ -143,6 +143,14 @@ Check if the user is a robot.
 
 ```php
 $agent->isRobot();
+```
+
+### Robot name
+
+Get the robot name. Note: this currently only works for mayor robots like Google, Facebook, Twitter, Bing, Baidu, ...
+
+```php
+$robot = $agent->robot();
 ```
 
 ### Browser/platform version
