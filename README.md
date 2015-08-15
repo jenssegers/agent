@@ -6,7 +6,7 @@ Agent
 A PHP desktop/mobile user agent parser with support for Laravel, based on [Mobile Detect](https://github.com/serbanghita/Mobile-Detect) with extended functionality.
 
 <p align="center">
-<img src="http://jenssegers.be/uploads/images/agent.png">
+<img src="http://jenssegers.be/uploads/images/agent.png" height="275">
 </p>
 
 Installation
