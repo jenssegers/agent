@@ -10,7 +10,7 @@ class Agent extends Mobile_Detect {
      *
      * @var array
      */
-    protected static $additionalOperatingSystems = [
+    protected static $additionalOperatingSystems = array(
         'Windows'           => 'Windows',
         'Windows NT'        => 'Windows NT',
         'OS X'              => 'Mac OS X',
@@ -20,14 +20,14 @@ class Agent extends Mobile_Detect {
         'OpenBSD'           => 'OpenBSD',
         'Linux'             => 'Linux',
         'ChromeOS'          => 'CrOS',
-    ];
+    );
 
     /**
      * List of additional browsers.
      *
      * @var array
      */
-    protected static $additionalBrowsers = [
+    protected static $additionalBrowsers = array(
         'Opera'             => 'Opera|OPR',
         'Chrome'            => 'Chrome',
         'Firefox'           => 'Firefox',
@@ -35,15 +35,14 @@ class Agent extends Mobile_Detect {
         'IE'                => 'MSIE|IEMobile|MSIEMobile|Trident/[.0-9]+',
         'Netscape'          => 'Netscape',
         'Mozilla'           => 'Mozilla',
-    ];
+    );
 
     /**
      * List of additional browsers.
      *
      * @var array
      */
-    protected static $additionalProperties = [
-
+    protected static $additionalProperties = array(
         // Operating systems
         'Windows'           => 'Windows NT [VER]',
         'Windows NT'        => 'Windows NT [VER]',
@@ -57,21 +56,23 @@ class Agent extends Mobile_Detect {
         'Netscape'          => 'Netscape/[VER]',
         'Mozilla'           => 'rv:[VER]',
         'IE'                => ['IEMobile/[VER];', 'IEMobile [VER]', 'MSIE [VER];', 'rv:[VER]'],
-    ];
+    );
 
     /**
      * List of robots.
      *
      * @var array
      */
-    protected static $robots = [
-        'Googlebot'         => 'googlebot',
+    protected static $robots = array(
+        'Google'            => 'googlebot',
         'MSNBot'            => 'msnbot',
         'Baiduspider'       => 'baiduspider',
         'Bing'              => 'bingbot',
         'Yahoo'             => 'yahoo',
         'Lycos'             => 'lycos',
-    ];
+        'Facebook'          => 'facebookexternalhit',
+        'Twitter'           => 'Twitterbot',
+    );
 
     /**
      * Get all detection rules. These rules include the additional
@@ -133,7 +134,7 @@ class Agent extends Mobile_Detect {
             return explode(',', preg_replace('/(;q=[0-9\.]+)/i', '', strtolower(trim($acceptLanguage))));
         }
 
-        return [];
+        return array();
     }
 
     /**
@@ -151,7 +152,7 @@ class Agent extends Mobile_Detect {
             if (empty($regex)) continue;
 
             // Check match
-            if ($this->match($regex, $userAgent)) return $key;
+            if ($this->match($regex, $userAgent)) return $key ?: reset($this->matchesArray);
         }
 
         return false;
@@ -222,6 +223,24 @@ class Agent extends Mobile_Detect {
         return (! $this->isMobile() && ! $this->isTablet() && ! $this->isRobot());
     }
 
+     /**
+     * Get the robot name.
+     *
+     * @param  string $userAgent
+     * @return string
+     */
+    public function robot($userAgent = null)
+    {
+        // Get bot rules
+        $rules = $this->mergeRules(
+            static::$robots, // NEW
+            array(static::$utilities['Bot']),
+            array(static::$utilities['MobileBot'])
+        );
+
+        return $this->findDetectionRulesAgainstUA($rules, $userAgent);
+    }
+
     /**
      * Check if device is a robot.
      *
@@ -232,7 +251,8 @@ class Agent extends Mobile_Detect {
     {
         // Get bot rules
         $rules = $this->mergeRules(
-            [static::$utilities['Bot']],
+            array(static::$utilities['Bot']),
+            array(static::$utilities['MobileBot']),
             static::$robots // NEW
         );
 
@@ -274,7 +294,7 @@ class Agent extends Mobile_Detect {
      */
     protected function mergeRules()
     {
-        $merged = [];
+        $merged = array();
 
         foreach (func_get_args() as $rules)
         {
