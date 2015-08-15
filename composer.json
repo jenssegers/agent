@@ -1,6 +1,6 @@
 {
     "name": "jenssegers/agent",
-    "description": "A user agent class for Laravel",
+    "description": "A PHP desktop/mobile user agent parser with support for Laravel, based on Mobiledetect",
     "keywords": ["laravel", "useragent", "agent", "user agent", "browser", "platform", "mobile"],
     "license" : "MIT",
     "authors": [
