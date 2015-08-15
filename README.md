@@ -3,7 +3,7 @@ Laravel User Agent
 
 [![Latest Stable Version](http://img.shields.io/github/release/jenssegers/laravel-agent.svg)](https://packagist.org/packages/jenssegers/agent) [![Total Downloads](http://img.shields.io/packagist/dm/jenssegers/agent.svg)](https://packagist.org/packages/jenssegers/agent) [![Build Status](http://img.shields.io/travis/jenssegers/laravel-agent.svg)](https://travis-ci.org/jenssegers/laravel-agent) [![Coverage Status](http://img.shields.io/coveralls/jenssegers/laravel-agent.svg)](https://coveralls.io/r/jenssegers/laravel-agent)
 
-A user agent class for Laravel, based on [Mobile Detect](https://github.com/serbanghita/Mobile-Detect) with extended functionality.
+A desktop and mobile user agent parser for PHP, based on [Mobile Detect](https://github.com/serbanghita/Mobile-Detect) with extended functionality.
 
 Installation
 ------------
