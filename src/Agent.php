@@ -29,6 +29,7 @@ class Agent extends Mobile_Detect {
      */
     protected static $additionalBrowsers = array(
         'Opera'             => 'Opera|OPR',
+        'Edge'              => 'Edge',
         'Chrome'            => 'Chrome',
         'Firefox'           => 'Firefox',
         'Safari'            => 'Safari',

@@ -23,6 +23,7 @@ class AgentTest extends PHPUnit_Framework_TestCase {
         'Mozilla/5.0 (Windows; U; Windows NT 6.1; rv:2.2) Gecko/20110201'                                                                => 'Mozilla',
         'Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14'                                                                      => 'Opera',
         'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36 OPR/27.0.1689.76' => 'Opera',
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12'    => 'Edge'
     );
 
     private $robots = array(
