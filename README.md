@@ -147,7 +147,7 @@ $agent->isRobot();
 
 ### Robot name
 
-Get the robot name. Note: this currently only works for mayor robots like Google, Facebook, Twitter, Bing, Baidu, ...
+Get the robot name. Note: this currently only works for major robots like Google, Facebook, Twitter, Bing, Baidu etc ...
 
 ```php
 $robot = $agent->robot();
