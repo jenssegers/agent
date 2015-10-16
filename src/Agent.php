@@ -125,14 +125,31 @@ class Agent extends Mobile_Detect {
      */
     public function languages($acceptLanguage = null)
     {
-        if (!$acceptLanguage)
+        if (! $acceptLanguage)
         {
             $acceptLanguage = $this->getHttpHeader('HTTP_ACCEPT_LANGUAGE');
         }
 
         if ($acceptLanguage)
         {
-            return explode(',', preg_replace('/(;q=[0-9\.]+)/i', '', strtolower(trim($acceptLanguage))));
+            $languages = array();
+
+            // Parse accept language string.
+            foreach (explode(',', $acceptLanguage) as $piece)
+            {
+                $parts = explode(';', $piece);
+
+                $language = strtolower($parts[0]);
+
+                $priority = empty($parts[1]) ? 1. : floatval(str_replace('q=', '', $parts[1]));
+
+                $languages[$language] = $priority;
+            }
+
+            // Sort languages by priority.
+            arsort($languages);
+
+            return array_keys($languages);
         }
 
         return array();

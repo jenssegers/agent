@@ -84,6 +84,16 @@ class AgentTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals(array('nl-nl', 'nl', 'en-us', 'en'), $agent->languages());
     }
 
+    public function testLanguagesSorted()
+    {
+        $agent = new Agent;
+        $agent->setHttpHeaders(array(
+            'HTTP_ACCEPT_LANGUAGE'  => 'en;q=0.4,en-US,nl;q=0.6',
+        ));
+
+        $this->assertEquals(array('en-us', 'nl', 'en'), $agent->languages());
+    }
+
     public function testOperatingSystems()
     {
         $agent = new Agent;
