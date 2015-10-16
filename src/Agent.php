@@ -225,6 +225,18 @@ class Agent extends Mobile_Detect {
     }
 
     /**
+     * Check if the device is a mobile phone.
+     *
+     * @param  string $userAgent   deprecated
+     * @param  array  $httpHeaders deprecated
+     * @return bool
+     */
+    public function isPhone($userAgent = null, $httpHeaders = null)
+    {
+        return ($this->isMobile() && ! $this->isTablet());
+    }
+
+    /**
      * Get the robot name.
      *
      * @param  string $userAgent

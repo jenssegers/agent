@@ -129,10 +129,18 @@ $browser = $agent->browser();
 
 ### Desktop detection
 
-Check if the user is a desktop.
+Check if the user is using a desktop device.
 
 ```php
 $agent->isDesktop();
+```
+
+### Phone detection
+
+Check if the user is using a phone device.
+
+```php
+$agent->isPhone();
 ```
 
 *This checks if a user is not a mobile device, tablet or robot.*

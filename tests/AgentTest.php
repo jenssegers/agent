@@ -177,18 +177,21 @@ class AgentTest extends PHPUnit_Framework_TestCase {
         {
             $agent->setUserAgent($ua);
             $this->assertTrue($agent->isDesktop(), $ua);
+            $this->assertFalse($agent->isMobile(), $ua);
         }
 
         foreach($this->robots as $ua => $robot)
         {
             $agent->setUserAgent($ua);
             $this->assertFalse($agent->isDesktop(), $ua);
+            $this->assertFalse($agent->isMobile(), $ua);
         }
 
         foreach($this->devices as $ua => $device)
         {
             $agent->setUserAgent($ua);
             $this->assertFalse($agent->isDesktop(), $ua);
+            $this->assertTrue($agent->isMobile(), $ua);
         }
     }
 
