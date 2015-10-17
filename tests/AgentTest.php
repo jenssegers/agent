@@ -78,6 +78,13 @@ class AgentTest extends PHPUnit_Framework_TestCase {
         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/537.13+ (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2',
     );
 
+    private $phones = array(
+         'Mozilla/5.0 (iPhone; U; ru; CPU iPhone OS 4_2_1 like Mac OS X; ru) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8C148a Safari/6533.18.5',
+        'Mozilla/5.0 (Linux; U; Android 2.3.4; fr-fr; HTC Desire Build/GRJ22) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1',
+        'Mozilla/5.0 (BlackBerry; U; BlackBerry 9900; en) AppleWebKit/534.11+ (KHTML, like Gecko) Version/7.1.0.346 Mobile Safari/534.11+',
+        'Mozilla/5.0 (Linux; U; Android 2.2; en-us; Nexus One Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1',
+    );
+
     public function testLanguages()
     {
         $agent = new Agent;
@@ -203,7 +210,7 @@ class AgentTest extends PHPUnit_Framework_TestCase {
         }
     }
 
-    public function testDesktop()
+    public function testIsMethods()
     {
         $agent = new Agent;
 
@@ -212,20 +219,37 @@ class AgentTest extends PHPUnit_Framework_TestCase {
             $agent->setUserAgent($ua);
             $this->assertTrue($agent->isDesktop(), $ua);
             $this->assertFalse($agent->isMobile(), $ua);
+            $this->assertFalse($agent->isTablet(), $ua);
+            $this->assertFalse($agent->isPhone(), $ua);
+            $this->assertFalse($agent->isRobot(), $ua);
+        }
+
+        foreach($this->phones as $ua)
+        {
+            $agent->setUserAgent($ua);
+            $this->assertTrue($agent->isPhone(), $ua);
+            $this->assertTrue($agent->isMobile(), $ua);
+            $this->assertFalse($agent->isDesktop(), $ua);
+            $this->assertFalse($agent->isTablet(), $ua);
+            $this->assertFalse($agent->isRobot(), $ua);
         }
 
         foreach($this->robots as $ua => $robot)
         {
             $agent->setUserAgent($ua);
+            $this->assertTrue($agent->isRobot(), $ua);
             $this->assertFalse($agent->isDesktop(), $ua);
             $this->assertFalse($agent->isMobile(), $ua);
+            $this->assertFalse($agent->isTablet(), $ua);
+            $this->assertFalse($agent->isPhone(), $ua);
         }
 
         foreach($this->mobileDevices as $ua => $device)
         {
             $agent->setUserAgent($ua);
-            $this->assertFalse($agent->isDesktop(), $ua);
             $this->assertTrue($agent->isMobile(), $ua);
+            $this->assertFalse($agent->isDesktop(), $ua);
+            $this->assertFalse($agent->isRobot(), $ua);
         }
 
         foreach($this->desktopDevices as $ua => $device)
@@ -233,6 +257,9 @@ class AgentTest extends PHPUnit_Framework_TestCase {
             $agent->setUserAgent($ua);
             $this->assertTrue($agent->isDesktop(), $ua);
             $this->assertFalse($agent->isMobile(), $ua);
+            $this->assertFalse($agent->isTablet(), $ua);
+            $this->assertFalse($agent->isPhone(), $ua);
+            $this->assertFalse($agent->isRobot(), $ua);
         }
     }
 
