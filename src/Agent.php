@@ -6,6 +6,15 @@ use Mobile_Detect;
 class Agent extends Mobile_Detect {
 
     /**
+     * List of desktop devices.
+     *
+     * @var array
+     */
+    protected static $additionalDevices = array(
+        'Macintosh'        => 'Macintosh',
+    );
+
+    /**
      * List of additional operating systems.
      *
      * @var array
@@ -88,6 +97,7 @@ class Agent extends Mobile_Detect {
         if (!$rules)
         {
             $rules = $this->mergeRules(
+                static::$additionalDevices, // NEW
                 static::$phoneDevices,
                 static::$tabletDevices,
                 static::$operatingSystems,
@@ -221,6 +231,7 @@ class Agent extends Mobile_Detect {
     {
         // Get device rules
         $rules = $this->mergeRules(
+            static::$additionalDevices, // NEW
             static::$phoneDevices,
             static::$tabletDevices,
             static::$utilities
