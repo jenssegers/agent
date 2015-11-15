@@ -135,6 +135,8 @@ Check if the user is using a desktop device.
 $agent->isDesktop();
 ```
 
+*This checks if a user is not a mobile device, tablet or robot.*
+
 ### Phone detection
 
 Check if the user is using a phone device.
@@ -142,8 +144,6 @@ Check if the user is using a phone device.
 ```php
 $agent->isPhone();
 ```
-
-*This checks if a user is not a mobile device, tablet or robot.*
 
 ### Robot detection
 
