@@ -66,6 +66,7 @@ class Agent extends Mobile_Detect {
         'Netscape'          => 'Netscape/[VER]',
         'Mozilla'           => 'rv:[VER]',
         'IE'                => array('IEMobile/[VER];', 'IEMobile [VER]', 'MSIE [VER];', 'rv:[VER]'),
+        'Edge'              => 'Edge/[VER]',
     );
 
     /**

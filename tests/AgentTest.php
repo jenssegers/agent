@@ -57,6 +57,7 @@ class AgentTest extends PHPUnit_Framework_TestCase {
         'Mozilla/5.0 (Windows; U; Windows NT 6.1; rv:2.2) Gecko/20110201'                                                                                                            => '2.2',
         'Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14'                                                                                                                  => '12.14',
         'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; de) Opera 11.51'                                                                                                         => '11.51',
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12'                                                => '12',
     );
 
     private $operatingSystemVersions = array(
