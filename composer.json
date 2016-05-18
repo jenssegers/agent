@@ -16,8 +16,8 @@
         "mobiledetect/mobiledetectlib": "^2.7.6"
     },
     "require-dev": {
-        "phpunit/phpunit": "^4.0|^5.0",
-        "satooshi/php-coveralls": "^0.6"
+        "phpunit/phpunit": "^4.8|^5.0",
+        "satooshi/php-coveralls": "^1.0"
     },
     "autoload": {
         "psr-4": {
