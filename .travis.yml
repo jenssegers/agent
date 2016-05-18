@@ -10,8 +10,10 @@ php:
 
 sudo: false
 
-before_script:
+before_install:
   - travis_retry composer self-update
+
+install:
   - travis_retry composer update --dev --no-interaction --prefer-source
 
 script:
