@@ -12,7 +12,7 @@ sudo: false
 
 before_script:
   - travis_retry composer self-update
-  - travis_retry composer update --dev --no-interaction --prefer-source $PREFER_LOWEST
+  - travis_retry composer update --dev --no-interaction --prefer-source
 
 script:
   - mkdir -p build/logs
