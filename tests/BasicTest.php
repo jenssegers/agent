@@ -7,7 +7,7 @@ use Jenssegers\Agent\Agent;
 class BasicTestExtended extends BasicTest
 {
     /**
-     * @var Mobile_Detect
+     * @var Agent
      */
     protected $detect;
 
