@@ -46,7 +46,6 @@ class Agent extends Mobile_Detect {
         'IE'                => 'MSIE|IEMobile|MSIEMobile|Trident/[.0-9]+',
         'Netscape'          => 'Netscape',
         'Mozilla'           => 'Mozilla',
-
     );
 
     /**
