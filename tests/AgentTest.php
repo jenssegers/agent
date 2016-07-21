@@ -15,17 +15,17 @@ class AgentTest extends PHPUnit_Framework_TestCase {
     );
 
     private $browsers = array(
-        'Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko'                                                                  => 'IE',
-        'Mozilla/5.0 (iPad; CPU OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5355d Safari/8536.25' => 'Safari',
-        'Mozilla/5.0 (Windows; U; Win 9x 4.90; SG; rv:1.9.2.4) Gecko/20101104 Netscape/9.1.0285'                                         => 'Netscape',
-        'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0'                                                  => 'Firefox',
-        'Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1667.0 Safari/537.36'               => 'Chrome',
-        'Mozilla/5.0 (Windows; U; Windows NT 6.1; rv:2.2) Gecko/20110201'                                                                => 'Mozilla',
-        'Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14'                                                                      => 'Opera',
-        'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36 OPR/27.0.1689.76' => 'Opera',
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12'    => 'Edge',
+        'Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko'                                                                           => 'IE',
+        'Mozilla/5.0 (iPad; CPU OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5355d Safari/8536.25'          => 'Safari',
+        'Mozilla/5.0 (Windows; U; Win 9x 4.90; SG; rv:1.9.2.4) Gecko/20101104 Netscape/9.1.0285'                                                  => 'Netscape',
+        'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0'                                                           => 'Firefox',
+        'Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1667.0 Safari/537.36'                        => 'Chrome',
+        'Mozilla/5.0 (Windows; U; Windows NT 6.1; rv:2.2) Gecko/20110201'                                                                         => 'Mozilla',
+        'Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14'                                                                               => 'Opera',
+        'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36 OPR/27.0.1689.76'          => 'Opera',
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12'             => 'Edge',
         'Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5376e Safari/8536.25' => 'Safari',
-        'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36 Vivaldi/1.2.490.43' => 'Vivaldi',
+        'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36 Vivaldi/1.2.490.43'       => 'Vivaldi',
     );
 
     private $robots = array(
@@ -59,7 +59,7 @@ class AgentTest extends PHPUnit_Framework_TestCase {
         'Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14'                                                                                                                  => '12.14',
         'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; de) Opera 11.51'                                                                                                         => '11.51',
         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12'                                                => '12',
-        'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36 Vivaldi/1.2.490.43' => '1.2.490.43',
+        'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36 Vivaldi/1.2.490.43'                                          => '1.2.490.43',
     );
 
     private $operatingSystemVersions = array(
