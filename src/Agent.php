@@ -33,12 +33,14 @@ class Agent extends Mobile_Detect {
 
     /**
      * List of additional browsers.
+     * Note: 'Vivaldi' must be above Chrome, otherwise it'll fail
      *
      * @var array
      */
     protected static $additionalBrowsers = array(
         'Opera'             => 'Opera|OPR',
         'Edge'              => 'Edge',
+        'Vivaldi'           => 'Vivaldi',
         'Chrome'            => 'Chrome',
         'Firefox'           => 'Firefox',
         'Safari'            => 'Safari',
@@ -67,6 +69,7 @@ class Agent extends Mobile_Detect {
         'Mozilla'           => 'rv:[VER]',
         'IE'                => array('IEMobile/[VER];', 'IEMobile [VER]', 'MSIE [VER];', 'rv:[VER]'),
         'Edge'              => 'Edge/[VER]',
+        'Vivaldi'           => 'Vivaldi/[VER]',
     );
 
     /**
