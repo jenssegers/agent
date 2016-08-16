@@ -86,6 +86,7 @@ class Agent extends Mobile_Detect {
         'Lycos'             => 'lycos',
         'Facebook'          => 'facebookexternalhit',
         'Twitter'           => 'Twitterbot',
+        'Yandex'            => 'Yandex',
     );
 
     /**

@@ -33,6 +33,7 @@ class AgentTest extends PHPUnit_Framework_TestCase {
         'facebookexternalhit/1.1 (+http(s)://www.facebook.com/externalhit_uatext.php)' => 'Facebook',
         'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)'      => 'Bing',
         'Twitterbot/1.0'                                                               => 'Twitter',
+        'Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots)'             => 'Yandex',
     );
 
     private $mobileDevices = array(
