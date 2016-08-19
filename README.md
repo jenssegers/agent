@@ -116,7 +116,7 @@ $device = $agent->device();
 Get the operating system. (Ubuntu, Windows, OS X, ...)
 
 ```php
-$agent = $agent->platform();
+$platform = $agent->platform();
 ```
 
 ### Browser name
