@@ -356,13 +356,13 @@ class Agent extends Mobile_Detect {
      */
     public function getIP()
     {
-        if ($ip === null) {
+        if ($this->ip === null) {
             if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-                $ip = $_SERVER['HTTP_CLIENT_IP'];
+                $this->ip = $_SERVER['HTTP_CLIENT_IP'];
             } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-                $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+                $this->ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
             } else {
-                $ip = $_SERVER['REMOTE_ADDR'];
+                $this->ip = $_SERVER['REMOTE_ADDR'];
             }
         }
 
