@@ -90,6 +90,12 @@ class Agent extends Mobile_Detect {
     );
 
     /**
+     * The client's IP is stored in here.
+     * @var string
+     */
+    protected $ip = null;
+
+    /**
      * Get all detection rules. These rules include the additional
      * platforms and browsers.
      *
@@ -331,6 +337,36 @@ class Agent extends Mobile_Detect {
         }
 
         return parent::version($propertyName, $type);
+    }
+
+    /**
+     * Set the client's IP to be used.
+     *
+     * @param string|null $ip The client's IP string to set.
+     */
+    public function setIP($ip = null)
+    {
+        $this->ip = $ip;
+    }
+
+    /**
+     * Get the IP from the client.
+     * 
+     * @return [type] [description]
+     */
+    public function getIP()
+    {
+        if ($ip === null) {
+            if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+                $ip = $_SERVER['HTTP_CLIENT_IP'];
+            } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+                $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+            } else {
+                $ip = $_SERVER['REMOTE_ADDR'];
+            }
+        }
+
+        return $this->ip;
     }
 
     /**

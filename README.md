@@ -161,6 +161,20 @@ Get the robot name. Note: this currently only works for major robots like Google
 $robot = $agent->robot();
 ```
 
+### IP detection
+
+Get the client's IP.
+
+```php
+$agent->getIP();
+```
+
+You can also set the client's IP if you wish.
+
+```php
+$agent->setIP('127.0.0.1');
+```
+
 ### Browser/platform version
 
 MobileDetect recently added a `version` method that can get the version number for components. To get the browser or platform version you can use:
