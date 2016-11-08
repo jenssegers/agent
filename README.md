@@ -176,9 +176,10 @@ $version = $agent->version($platform);
 ### Check mac address client
 
 simply call function : 
-$macAddress = $agent->macAddress();
-
 ```php
+$macAddress = $agent->macAddress();
+```
+
 *Note, the version method is still in beta, so it might not return the correct result.*
 
 ## License
