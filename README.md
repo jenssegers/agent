@@ -176,5 +176,5 @@ $version = $agent->version($platform);
 *Note, the version method is still in beta, so it might not return the correct result.*
 
 ## License
-
+ 
 Laravel User Agent is licensed under [The MIT License (MIT)](LICENSE).
