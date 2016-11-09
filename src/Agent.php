@@ -368,7 +368,7 @@ class Agent extends Mobile_Detect {
     }
     
     /**
-     * Check the Mac Address or get client MAC address by a access on a website
+     * Check the get Mac Address or get client MAC address by a access on a website
      *  example : Linux Ubuntu Windows...
      */
 
