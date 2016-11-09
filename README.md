@@ -173,6 +173,12 @@ $platform = $agent->platform();
 $version = $agent->version($platform);
 ```
 
+### Client Mac Address :
+
+```php
+$macAddress = $agent->macAddress();
+```
+
 *Note, the version method is still in beta, so it might not return the correct result.*
 
 ## License
