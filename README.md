@@ -175,7 +175,7 @@ $version = $agent->version($platform);
 
 ### Client Mac Address :
 
-```php
+```
 $macAddress = $agent->macAddress();
 ```
 
