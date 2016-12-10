@@ -1,4 +1,6 @@
-<?php namespace Jenssegers\Agent\Facades;
+<?php
+
+namespace Jenssegers\Agent\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
