@@ -14,6 +14,17 @@ class AgentServiceProvider extends ServiceProvider {
     protected $defer = false;
 
     /**
+     * Register the service provider.
+     */
+    public function register()
+    {
+        $this->app->singleton('Jenssegers\Agent\Contracts\Agent', function ($app) {
+            return new Agent($app['request']->server->all());
+        });
+        $this->app->singleton('agent', 'Jenssegers\Agent\Contracts\Agent');
+    }
+
+    /**
      * Bootstrap the application events.
      */
     public function boot()
@@ -21,15 +32,11 @@ class AgentServiceProvider extends ServiceProvider {
         //
     }
 
-    /**
-     * Register the service provider.
-     */
-    public function register()
+    public function provides()
     {
-        $this->app['agent'] = $this->app->share(function ($app)
-        {
-            return new Agent($app['request']->server->all());
-        });
+        return [
+            'Jenssegers\Agent\Contracts\Agent',
+            'agent',
+        ];
     }
-
 }
