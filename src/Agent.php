@@ -3,9 +3,10 @@
 namespace Jenssegers\Agent;
 
 use BadMethodCallException;
+use Jenssegers\Agent\Contracts\Agent as AgentContract;
 use Mobile_Detect;
 
-class Agent extends Mobile_Detect {
+class Agent extends Mobile_Detect implements AgentContract {
 
     /**
      * List of desktop devices.
@@ -138,6 +139,8 @@ class Agent extends Mobile_Detect {
     /**
      * Get accept languages.
      *
+     * @param  string|null  $acceptLanguage
+     *
      * @return array
      */
     public function languages($acceptLanguage = null)
@@ -177,6 +180,7 @@ class Agent extends Mobile_Detect {
      *
      * @param  array  $rules
      * @param  null   $userAgent
+     *
      * @return string
      */
     protected function findDetectionRulesAgainstUA(array $rules, $userAgent = null)
@@ -196,6 +200,8 @@ class Agent extends Mobile_Detect {
     /**
      * Get the browser name.
      *
+     * @param  string|null  $userAgent
+     *
      * @return string
      */
     public function browser($userAgent = null)
@@ -214,7 +220,8 @@ class Agent extends Mobile_Detect {
     /**
      * Get the platform name.
      *
-     * @param  string $userAgent
+     * @param  string|null  $userAgent
+     *
      * @return string
      */
     public function platform($userAgent = null)
@@ -231,7 +238,8 @@ class Agent extends Mobile_Detect {
     /**
      * Get the device name.
      *
-     * @param  string $userAgent
+     * @param  string|null  $userAgent
+     *
      * @return string
      */
     public function device($userAgent = null)
@@ -250,11 +258,9 @@ class Agent extends Mobile_Detect {
     /**
      * Check if the device is a desktop computer.
      *
-     * @param  string $userAgent   deprecated
-     * @param  array  $httpHeaders deprecated
      * @return bool
      */
-    public function isDesktop($userAgent = null, $httpHeaders = null)
+    public function isDesktop()
     {
         return ! $this->isMobile() && ! $this->isTablet() && ! $this->isRobot();
     }
@@ -262,11 +268,9 @@ class Agent extends Mobile_Detect {
     /**
      * Check if the device is a mobile phone.
      *
-     * @param  string $userAgent   deprecated
-     * @param  array  $httpHeaders deprecated
      * @return bool
      */
-    public function isPhone($userAgent = null, $httpHeaders = null)
+    public function isPhone()
     {
         return $this->isMobile() && ! $this->isTablet();
     }
@@ -274,7 +278,8 @@ class Agent extends Mobile_Detect {
     /**
      * Get the robot name.
      *
-     * @param  string $userAgent
+     * @param  string|null  $userAgent
+     *
      * @return string
      */
     public function robot($userAgent = null)
@@ -292,7 +297,8 @@ class Agent extends Mobile_Detect {
     /**
      * Check if device is a robot.
      *
-     * @param  string  $userAgent
+     * @param  string|null  $userAgent
+     *
      * @return bool
      */
     public function isRobot($userAgent = null)
@@ -316,7 +322,10 @@ class Agent extends Mobile_Detect {
     /**
      * Check the version of the given property in the User-Agent.
      *
-     * @inherit
+     * @param  string  $propertyName
+     * @param  string  $type
+     *
+     * @return string|float
      */
     public function version($propertyName, $type = self::VERSION_TYPE_STRING)
     {

@@ -13,7 +13,7 @@ class Agent extends Facade {
      */
     protected static function getFacadeAccessor()
     {
-        return 'agent';
+        return 'Jenssegers\Agent\Contracts\Agent';
     }
 
 }
