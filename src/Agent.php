@@ -368,6 +368,42 @@ class Agent extends Mobile_Detect {
 
         return $merged;
     }
+    
+    /**
+     * Check the Mac Address or get client MAC address by a access on a website
+     *  example : Linux Ubuntu Windows...
+     */
+
+    public function macAddress()
+    {
+
+        if ($this->isDesktop()) {
+            if ($this->platform() == 'Linux' || $this->platform() == 'Debian' || $this->platform() == 'Ubuntu' || $this->platform() == 'OS X') {
+
+
+                ob_start();
+                system('ifconfig -a');
+                $mycom = ob_get_contents(); // Capture the output into a variable
+                ob_clean(); // Clean (erase) the output buffer
+                $findme = "Physical";
+                $pmac = strpos($mycom, $findme); // Find the position of Physical text
+                $mac = substr($mycom, ($pmac + 37), 18);
+                return $mac;
+
+            }
+            if ($this->platform() == 'Windows') {
+                ob_start();
+                system('ipconfig/all');
+                $mycom = ob_get_contents(); // Capture the output into a variable
+                ob_clean(); // Clean (erase) the output buffer
+                $findme = "Physical";
+                $pmac = strpos($mycom, $findme); // Find the position of Physical text
+                $mac = substr($mycom, ($pmac + 36), 17); // Get Physical Address
+
+                return $mac;
+            }
+        }
+    }
 
     /**
      * Changing detection type to extended.
