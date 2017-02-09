@@ -128,9 +128,7 @@ class Agent extends Mobile_Detect {
         if ($this->detectionType == static::DETECTION_TYPE_EXTENDED)
         {
             return static::getDetectionRulesExtended();
-        }
-        else
-        {
+        } else {
             return static::getMobileDetectionRules();
         }
     }
@@ -323,9 +321,9 @@ class Agent extends Mobile_Detect {
         $check = key(static::$additionalProperties);
 
         // Check if the additional properties have been added already
-        if ( ! array_key_exists($check, parent::$properties))
+        if (! array_key_exists($check, parent::$properties))
         {
-            // TODO: why is mergeRules not working here?
+            //@todo: why is mergeRules not working here?
             parent::$properties = array_merge(
                 parent::$properties,
                 static::$additionalProperties
@@ -351,15 +349,11 @@ class Agent extends Mobile_Detect {
                 if (empty($merged[$key]))
                 {
                     $merged[$key] = $value;
-                }
-                else
-                {
+                } else {
                     if (is_array($merged[$key]))
                     {
                         $merged[$key][] = $value;
-                    }
-                    else
-                    {
+                    } else {
                         $merged[$key] .= '|' . $value;
                     }
                 }
@@ -388,5 +382,4 @@ class Agent extends Mobile_Detect {
 
         return $this->matchUAAgainstKey($key);
     }
-
 }
