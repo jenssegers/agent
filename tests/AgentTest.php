@@ -268,4 +268,20 @@ class AgentTest extends PHPUnit_Framework_TestCase {
         }
     }
 
+    public function testSetIP()
+    {
+        $agent = new Agent;
+        $agent->setIP('127.0.0.1');
+
+        $this->assertEquals('127.0.0.1', $agent->getIP());
+    }
+
+    public function testGetIP()
+    {
+        $agent = new Agent;
+        $agent->setIP('127.0.0.1');
+
+        $this->assertEquals('127.0.0.1', $agent->getIP());
+    }
+
 }
