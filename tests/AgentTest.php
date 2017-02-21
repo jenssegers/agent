@@ -29,10 +29,10 @@ class AgentTest extends PHPUnit_Framework_TestCase {
     ];
 
     private $robots = [
-        'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)' => 'Google',
-        'facebookexternalhit/1.1 (+http(s)://www.facebook.com/externalhit_uatext.php)' => 'Facebook',
-        'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)' => 'Bing',
-        'Twitterbot/1.0' => 'Twitter',
+        'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)' => 'Googlebot',
+        'facebookexternalhit/1.1 (+http(s)://www.facebook.com/externalhit_uatext.php)' => 'Facebookexternalhit',
+        'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)' => 'Bingbot',
+        'Twitterbot/1.0' => 'Twitterbot',
         'Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots)' => 'Yandex',
     ];
 

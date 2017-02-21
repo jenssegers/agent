@@ -24,13 +24,13 @@ Laravel (optional)
 Add the service provider in `app/config/app.php`:
 
 ```php
-'Jenssegers\Agent\AgentServiceProvider',
+Jenssegers\Agent\AgentServiceProvider::class,
 ```
 
 And add the Agent alias to `app/config/app.php`:
 
 ```php
-'Agent' => 'Jenssegers\Agent\Facades\Agent',
+'Agent' => Jenssegers\Agent\Facades\Agent::class,
 ```
 
 Basic Usage
@@ -147,7 +147,7 @@ $agent->isPhone();
 
 ### Robot detection
 
-Check if the user is a robot.
+Check if the user is a robot. This uses [jaybizzle/crawler-detect](https://github.com/JayBizzle/Crawler-Detect) to do the actual robot detection.
 
 ```php
 $agent->isRobot();
@@ -155,7 +155,7 @@ $agent->isRobot();
 
 ### Robot name
 
-Get the robot name. Note: this currently only works for major robots like Google, Facebook, Twitter, Bing, Baidu etc ...
+Get the robot name.
 
 ```php
 $robot = $agent->robot();
