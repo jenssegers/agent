@@ -15,5 +15,4 @@ class VendorsTestExtended extends VendorsTest
     {
         $this->detect = new Agent;
     }
-
 }

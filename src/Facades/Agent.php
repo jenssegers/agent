@@ -4,7 +4,8 @@ namespace Jenssegers\Agent\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class Agent extends Facade {
+class Agent extends Facade
+{
 
     /**
      * Get the registered name of the component.
@@ -15,5 +16,4 @@ class Agent extends Facade {
     {
         return 'agent';
     }
-
 }
