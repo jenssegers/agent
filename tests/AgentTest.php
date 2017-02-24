@@ -1,8 +1,9 @@
 <?php
 
 use Jenssegers\Agent\Agent;
+use PHPUnit\Framework\TestCase;
 
-class AgentTest extends PHPUnit_Framework_TestCase
+class AgentTest extends TestCase
 {
     private $operatingSystems = [
         'Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko' => 'Windows',
