@@ -120,7 +120,7 @@ class AgentTest extends TestCase
             $this->assertEquals($platform, $agent->platform(), $ua);
             $this->assertTrue($agent->is($platform), $platform);
 
-            if (!strpos($platform, ' ')) {
+            if (! strpos($platform, ' ')) {
                 $method = "is{$platform}";
                 $this->assertTrue($agent->{$method}(), $ua);
             }
@@ -136,7 +136,7 @@ class AgentTest extends TestCase
             $this->assertEquals($browser, $agent->browser(), $ua);
             $this->assertTrue($agent->is($browser), $browser);
 
-            if (!strpos($browser, ' ')) {
+            if (! strpos($browser, ' ')) {
                 $method = "is{$browser}";
                 $this->assertTrue($agent->{$method}(), $ua);
             }
@@ -164,7 +164,7 @@ class AgentTest extends TestCase
             $this->assertTrue($agent->isMobile(), $ua);
             $this->assertFalse($agent->isDesktop(), $ua);
 
-            if (!strpos($device, ' ')) {
+            if (! strpos($device, ' ')) {
                 $method = "is{$device}";
                 $this->assertTrue($agent->{$method}(), $ua, $method);
             }
@@ -181,7 +181,7 @@ class AgentTest extends TestCase
             $this->assertFalse($agent->isMobile(), $ua);
             $this->assertTrue($agent->isDesktop(), $ua);
 
-            if (!strpos($device, ' ')) {
+            if (! strpos($device, ' ')) {
                 $method = "is{$device}";
                 $this->assertTrue($agent->{$method}(), $ua, $method);
             }
