@@ -43,6 +43,7 @@ class Agent extends Mobile_Detect
     protected static $additionalBrowsers = [
         'Opera' => 'Opera|OPR',
         'Edge' => 'Edge',
+        'UCBrowser' => 'UCBrowser',
         'Vivaldi' => 'Vivaldi',
         'Chrome' => 'Chrome',
         'Firefox' => 'Firefox',
