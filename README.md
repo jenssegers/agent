@@ -18,6 +18,11 @@ Install using composer:
 composer require jenssegers/agent
 ```
 
+#### Laravel compatibility
+
+Work on Laravel 5+.
+
+
 Laravel (optional)
 ------------------
 
@@ -36,7 +41,7 @@ And add the Agent alias to `app/config/app.php`:
 Basic Usage
 -----------
 
-Start by creating an `Agent` instance (or use the `Agent` Facade if you are using Laravel):
+Start by creating an `Agent` instance:
 
 ```php
 use Jenssegers\Agent\Agent;
@@ -52,6 +57,16 @@ $agent->setHttpHeaders($headers);
 ```
 
 All of the original [Mobile Detect](https://github.com/serbanghita/Mobile-Detect) methods are still available, check out some original examples at https://github.com/serbanghita/Mobile-Detect/wiki/Code-examples
+
+#### Laravel Facade (alternative)
+
+You can also use the `Agent` Facade and call a specific method if you are using it on Laravel framework:
+
+```php
+use Agent;
+
+echo Agent::browser();
+```
 
 ### Is?
 
