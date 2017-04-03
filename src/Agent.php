@@ -41,6 +41,7 @@ class Agent extends Mobile_Detect
      * @var array
      */
     protected static $additionalBrowsers = [
+        'Opera Mini' => 'Opera Mini',
         'Opera' => 'Opera|OPR',
         'Edge' => 'Edge',
         'UCBrowser' => 'UCBrowser',
@@ -68,6 +69,7 @@ class Agent extends Mobile_Detect
         'ChromeOS' => 'CrOS x86_64 [VER]',
 
         // Browsers
+        'Opera Mini' => 'Opera Mini/[VER]',
         'Opera' => [' OPR/[VER]', 'Opera Mini/[VER]', 'Version/[VER]', 'Opera [VER]'],
         'Netscape' => 'Netscape/[VER]',
         'Mozilla' => 'rv:[VER]',
