@@ -28,6 +28,14 @@
     "extra": {
         "branch-alias": {
             "dev-master": "3.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Jenssegers\\Agent\\AgentServiceProvider"
+            ],
+            "aliases": {
+                "Agent": "Jenssegers\\Agent\\Facades\\Agent"
+            }
         }
     },
     "minimum-stability": "dev",
