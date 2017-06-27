@@ -21,13 +21,13 @@ composer require jenssegers/agent
 Laravel (optional)
 ------------------
 
-Add the service provider in `app/config/app.php`:
+Add the service provider in `config/app.php`:
 
 ```php
 Jenssegers\Agent\AgentServiceProvider::class,
 ```
 
-And add the Agent alias to `app/config/app.php`:
+And add the Agent alias to `config/app.php`:
 
 ```php
 'Agent' => Jenssegers\Agent\Facades\Agent::class,
