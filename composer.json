@@ -12,7 +12,6 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "illuminate/support": "^4.0|^5.0",
         "mobiledetect/mobiledetectlib": "^2.7.6",
         "jaybizzle/crawler-detect": "^1.2"
     },
@@ -37,6 +36,9 @@
                 "Agent": "Jenssegers\\Agent\\Facades\\Agent"
             }
         }
+    },
+    "suggests": {
+        "illuminate/support": "^4.0|^5.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true
