@@ -11,7 +11,7 @@ class AgentServiceProvider extends ServiceProvider
      *
      * @var bool
      */
-    protected $defer = false;
+    protected $defer = true;
 
     /**
      * Bootstrap the application events.
@@ -29,5 +29,17 @@ class AgentServiceProvider extends ServiceProvider
         $this->app->singleton('agent', function ($app) {
             return new Agent($app['request']->server->all());
         });
+
+        $this->app->alias('agent', Agent::class);
+    }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return ['agent', Agent::class];
     }
 }
