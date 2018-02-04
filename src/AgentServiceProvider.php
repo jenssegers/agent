@@ -14,14 +14,6 @@ class AgentServiceProvider extends ServiceProvider
     protected $defer = true;
 
     /**
-     * Bootstrap the application events.
-     */
-    public function boot()
-    {
-        //
-    }
-
-    /**
      * Register the service provider.
      */
     public function register()
