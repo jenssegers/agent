@@ -155,6 +155,21 @@ class AgentTest extends TestCase
         }
     }
 
+    public function testRobotShouldReturnFalse()
+    {
+        $agent = new Agent;
+
+        $this->assertFalse($agent->robot());
+    }
+
+    public function testCallShouldThrowBadMethodCallException()
+    {
+        $this->expectException('BadMethodCallException');
+
+        $agent = new Agent;
+        $agent->invalidMethod();
+    }
+
     public function testMobileDevices()
     {
         $agent = new Agent;

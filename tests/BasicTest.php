@@ -1,6 +1,6 @@
 <?php
 
-require 'vendor/mobiledetect/mobiledetectlib/tests/BasicsTest.php';
+require __DIR__ . '/../vendor/mobiledetect/mobiledetectlib/tests/BasicsTest.php';
 
 use Jenssegers\Agent\Agent;
 
