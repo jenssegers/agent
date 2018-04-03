@@ -162,10 +162,11 @@ class AgentTest extends TestCase
         $this->assertFalse($agent->robot());
     }
 
+    /**
+     * @expectedException BadMethodCallException
+     */
     public function testCallShouldThrowBadMethodCallException()
     {
-        $this->expectException('BadMethodCallException');
-
         $agent = new Agent;
         $agent->invalidMethod();
     }
