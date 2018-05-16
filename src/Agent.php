@@ -93,7 +93,7 @@ class Agent extends Mobile_Detect
     {
         static $rules;
 
-        if (! $rules) {
+        if (!$rules) {
             $rules = $this->mergeRules(
                 static::$additionalDevices, // NEW
                 static::$phoneDevices,
@@ -141,7 +141,7 @@ class Agent extends Mobile_Detect
      */
     public function languages($acceptLanguage = null)
     {
-        if (! $acceptLanguage) {
+        if (!$acceptLanguage) {
             $acceptLanguage = $this->getHttpHeader('HTTP_ACCEPT_LANGUAGE');
         }
 
@@ -254,7 +254,7 @@ class Agent extends Mobile_Detect
      */
     public function isDesktop($userAgent = null, $httpHeaders = null)
     {
-        return ! $this->isMobile($userAgent, $httpHeaders) && ! $this->isTablet($userAgent, $httpHeaders) && ! $this->isRobot($userAgent);
+        return !$this->isMobile($userAgent, $httpHeaders) && !$this->isTablet($userAgent, $httpHeaders) && !$this->isRobot($userAgent);
     }
 
     /**
@@ -266,7 +266,7 @@ class Agent extends Mobile_Detect
      */
     public function isPhone($userAgent = null, $httpHeaders = null)
     {
-        return $this->isMobile($userAgent, $httpHeaders) && ! $this->isTablet($userAgent, $httpHeaders);
+        return $this->isMobile($userAgent, $httpHeaders) && !$this->isTablet($userAgent, $httpHeaders);
     }
 
     /**
@@ -303,7 +303,7 @@ class Agent extends Mobile_Detect
         $check = key(static::$additionalProperties);
 
         // Check if the additional properties have been added already
-        if (! array_key_exists($check, parent::$properties)) {
+        if (!array_key_exists($check, parent::$properties)) {
             // TODO: why is mergeRules not working here?
             parent::$properties = array_merge(
                 parent::$properties,

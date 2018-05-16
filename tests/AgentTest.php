@@ -94,7 +94,7 @@ class AgentTest extends TestCase
 
     public function testLanguages()
     {
-        $agent = new Agent;
+        $agent = new Agent();
         $agent->setHttpHeaders([
             'HTTP_ACCEPT_LANGUAGE' => 'nl-NL,nl;q=0.8,en-US;q=0.6,en;q=0.4',
         ]);
@@ -104,7 +104,7 @@ class AgentTest extends TestCase
 
     public function testLanguagesSorted()
     {
-        $agent = new Agent;
+        $agent = new Agent();
         $agent->setHttpHeaders([
             'HTTP_ACCEPT_LANGUAGE' => 'en;q=0.4,en-US,nl;q=0.6',
         ]);
@@ -114,14 +114,14 @@ class AgentTest extends TestCase
 
     public function testOperatingSystems()
     {
-        $agent = new Agent;
+        $agent = new Agent();
 
         foreach ($this->operatingSystems as $ua => $platform) {
             $agent->setUserAgent($ua);
             $this->assertEquals($platform, $agent->platform(), $ua);
             $this->assertTrue($agent->is($platform), $platform);
 
-            if (! strpos($platform, ' ')) {
+            if (!strpos($platform, ' ')) {
                 $method = "is{$platform}";
                 $this->assertTrue($agent->{$method}(), $ua);
             }
@@ -130,14 +130,14 @@ class AgentTest extends TestCase
 
     public function testBrowsers()
     {
-        $agent = new Agent;
+        $agent = new Agent();
 
         foreach ($this->browsers as $ua => $browser) {
             $agent->setUserAgent($ua);
             $this->assertEquals($browser, $agent->browser(), $ua);
             $this->assertTrue($agent->is($browser), $browser);
 
-            if (! strpos($browser, ' ')) {
+            if (!strpos($browser, ' ')) {
                 $method = "is{$browser}";
                 $this->assertTrue($agent->{$method}(), $ua);
             }
@@ -146,7 +146,7 @@ class AgentTest extends TestCase
 
     public function testRobots()
     {
-        $agent = new Agent;
+        $agent = new Agent();
 
         foreach ($this->robots as $ua => $robot) {
             $agent->setUserAgent($ua);
@@ -157,23 +157,23 @@ class AgentTest extends TestCase
 
     public function testRobotShouldReturnFalse()
     {
-        $agent = new Agent;
+        $agent = new Agent();
 
         $this->assertFalse($agent->robot());
     }
 
     /**
-     * @expectedException BadMethodCallException
+     * @expectedException \BadMethodCallException
      */
     public function testCallShouldThrowBadMethodCallException()
     {
-        $agent = new Agent;
+        $agent = new Agent();
         $agent->invalidMethod();
     }
 
     public function testMobileDevices()
     {
-        $agent = new Agent;
+        $agent = new Agent();
 
         foreach ($this->mobileDevices as $ua => $device) {
             $agent->setUserAgent($ua);
@@ -181,7 +181,7 @@ class AgentTest extends TestCase
             $this->assertTrue($agent->isMobile(), $ua);
             $this->assertFalse($agent->isDesktop(), $ua);
 
-            if (! strpos($device, ' ')) {
+            if (!strpos($device, ' ')) {
                 $method = "is{$device}";
                 $this->assertTrue($agent->{$method}(), $ua, $method);
             }
@@ -190,7 +190,7 @@ class AgentTest extends TestCase
 
     public function testDesktopDevices()
     {
-        $agent = new Agent;
+        $agent = new Agent();
 
         foreach ($this->desktopDevices as $ua => $device) {
             $agent->setUserAgent($ua);
@@ -198,7 +198,7 @@ class AgentTest extends TestCase
             $this->assertFalse($agent->isMobile(), $ua);
             $this->assertTrue($agent->isDesktop(), $ua);
 
-            if (! strpos($device, ' ')) {
+            if (!strpos($device, ' ')) {
                 $method = "is{$device}";
                 $this->assertTrue($agent->{$method}(), $ua, $method);
             }
@@ -207,7 +207,7 @@ class AgentTest extends TestCase
 
     public function testVersions()
     {
-        $agent = new Agent;
+        $agent = new Agent();
 
         foreach ($this->browserVersions as $ua => $version) {
             $agent->setUserAgent($ua);
@@ -224,7 +224,7 @@ class AgentTest extends TestCase
 
     public function testIsMethods()
     {
-        $agent = new Agent;
+        $agent = new Agent();
 
         foreach ($this->desktops as $ua) {
             $agent->setUserAgent($ua);

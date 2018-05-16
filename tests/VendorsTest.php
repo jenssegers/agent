@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/../vendor/mobiledetect/mobiledetectlib/tests/UserAgentTest.php';
+require __DIR__.'/../vendor/mobiledetect/mobiledetectlib/tests/UserAgentTest.php';
 
 use Jenssegers\Agent\Agent;
 
@@ -13,6 +13,6 @@ class VendorsTestExtended extends VendorsTest
 
     public function setUp()
     {
-        $this->detect = new Agent;
+        $this->detect = new Agent();
     }
 }
