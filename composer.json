@@ -11,13 +11,13 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0",
+        "php": ">=5.6",
         "mobiledetect/mobiledetectlib": "^2.7.6",
         "jaybizzle/crawler-detect": "^1.2"
     },
     "require-dev": {
-        "phpunit/phpunit": "^4.0|^5.0|^6.0",
-        "satooshi/php-coveralls": "^1.0"
+        "phpunit/phpunit": "^5.0|^6.0|^7.0",
+        "satooshi/php-coveralls": "^2.0"
     },
     "autoload": {
         "psr-4": {
@@ -39,7 +39,5 @@
     },
     "suggest": {
         "illuminate/support": "^4.0|^5.0"
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    }
 }
