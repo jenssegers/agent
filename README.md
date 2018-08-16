@@ -39,7 +39,7 @@ Basic Usage
 Start by creating an `Agent` instance (or use the `Agent` Facade if you are using Laravel):
 
 ```php
-use Jenssegers\Agent\Agent;
+use Jenssegers\Agent;
 
 $agent = new Agent();
 ```
