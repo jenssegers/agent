@@ -14,7 +14,7 @@ class Agent extends Mobile_Detect
      * @var array
      */
     protected static $additionalDevices = [
-        'Macintosh' => 'Macintosh',
+        'Mac' => 'Macintosh',
     ];
 
     /**
@@ -25,7 +25,7 @@ class Agent extends Mobile_Detect
     protected static $additionalOperatingSystems = [
         'Windows' => 'Windows',
         'Windows NT' => 'Windows NT',
-        'OS X' => 'Mac OS X',
+        'macOS' => 'Mac OS X',
         'Debian' => 'Debian',
         'Ubuntu' => 'Ubuntu',
         'Macintosh' => 'PPC',
@@ -63,7 +63,7 @@ class Agent extends Mobile_Detect
         // Operating systems
         'Windows' => 'Windows NT [VER]',
         'Windows NT' => 'Windows NT [VER]',
-        'OS X' => 'OS X [VER]',
+        'macOS' => 'OS X [VER]',
         'BlackBerryOS' => ['BlackBerry[\w]+/[VER]', 'BlackBerry.*Version/[VER]', 'Version/[VER]'],
         'AndroidOS' => 'Android [VER]',
         'ChromeOS' => 'CrOS x86_64 [VER]',
