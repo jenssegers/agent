@@ -36,13 +36,15 @@ And add the Agent alias to `config/app.php`:
 Basic Usage
 -----------
 
-Start by creating an `Agent` instance (or use the `Agent` Facade if you are using Laravel):
+Use the Facade:
 
 ```php
-use Jenssegers\Agent\Agent;
-
-$agent = new Agent();
+if (\Agent::isDesktop()) {
+    // …
+}
 ```
+
+Alternatively, get the instance via the `app('agent')`. It's not adviced to use `new Agent` as this will not load the required header data from the current `Request` but from the global `$_SERVER` environment, which may fail in your tests.
 
 If you want to parse user agents other than the current request in CLI scripts for example, you can use the `setUserAgent` and `setHttpHeaders` methods:
 
