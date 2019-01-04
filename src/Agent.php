@@ -170,7 +170,7 @@ class Agent extends Mobile_Detect
      * Match a detection rule and return the matched key.
      *
      * @param  array $rules
-     * @param  null  $userAgent
+     * @param  string|null $userAgent
      * @return string
      */
     protected function findDetectionRulesAgainstUA(array $rules, $userAgent = null)
@@ -193,7 +193,7 @@ class Agent extends Mobile_Detect
     /**
      * Get the browser name.
      *
-     * @param null $userAgent
+     * @param  string|null $userAgent
      * @return string
      */
     public function browser($userAgent = null)
@@ -212,7 +212,7 @@ class Agent extends Mobile_Detect
     /**
      * Get the platform name.
      *
-     * @param  string $userAgent
+     * @param  string|null $userAgent
      * @return string
      */
     public function platform($userAgent = null)
@@ -229,7 +229,7 @@ class Agent extends Mobile_Detect
     /**
      * Get the device name.
      *
-     * @param  string $userAgent
+     * @param  string|null $userAgent
      * @return string
      */
     public function device($userAgent = null)
@@ -248,7 +248,7 @@ class Agent extends Mobile_Detect
     /**
      * Check if the device is a desktop computer.
      *
-     * @param  string $userAgent   deprecated
+     * @param  string|null $userAgent deprecated
      * @param  array  $httpHeaders deprecated
      * @return bool
      */
@@ -260,7 +260,7 @@ class Agent extends Mobile_Detect
     /**
      * Check if the device is a mobile phone.
      *
-     * @param  string $userAgent   deprecated
+     * @param  string|null $userAgent deprecated
      * @param  array  $httpHeaders deprecated
      * @return bool
      */
@@ -272,7 +272,7 @@ class Agent extends Mobile_Detect
     /**
      * Get the robot name.
      *
-     * @param  string $userAgent
+     * @param  string|null $userAgent
      * @return string|bool
      */
     public function robot($userAgent = null)
@@ -287,7 +287,7 @@ class Agent extends Mobile_Detect
     /**
      * Check if device is a robot.
      *
-     * @param  string $userAgent
+     * @param  string|null $userAgent
      * @return bool
      */
     public function isRobot($userAgent = null)
