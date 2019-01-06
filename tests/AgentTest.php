@@ -202,7 +202,7 @@ class AgentTest extends TestCase
 
             if (!strpos($device, ' ')) {
                 $method = "is{$device}";
-                $this->assertTrue($agent->{$method}(), $ua, $method);
+                $this->assertTrue($agent->{$method}(), $ua);
             }
         }
     }
