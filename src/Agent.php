@@ -299,6 +299,46 @@ class Agent extends Mobile_Detect
         return $this->getCrawlerDetect()->isCrawler($userAgent ?: $this->userAgent);
     }
 
+    public function version($propertyName, $type = self::VERSION_TYPE_STRING)
+    {
+        if (empty($propertyName)) {
+            return false;
+        }
+
+        // set the $type to the default if we don't recognize the type
+        if ($type !== self::VERSION_TYPE_STRING && $type !== self::VERSION_TYPE_FLOAT) {
+            $type = self::VERSION_TYPE_STRING;
+        }
+
+        $properties = self::getProperties();
+
+        // Check if the property exists in the properties array.
+        if (true === isset($properties[$propertyName])) {
+
+            // Prepare the pattern to be matched.
+            // Make sure we always deal with an array (string is converted).
+            $properties[$propertyName] = (array) $properties[$propertyName];
+
+            foreach ($properties[$propertyName] as $propertyMatchString) {
+
+                $propertyPattern = str_replace('[VER]', self::VER, $propertyMatchString);
+
+                // Identify and extract the version.
+                preg_match(sprintf('#%s#is', $propertyPattern), $this->userAgent, $match);
+
+                if (false === empty($match[1])) {
+                    $version = ($type === self::VERSION_TYPE_FLOAT ? $this->prepareVersionNo($match[1]) : $match[1]);
+
+                    return $version;
+                }
+
+            }
+
+        }
+
+        return false;
+    }
+
     /**
      * Merge multiple rules into one array.
      * @param array $all
