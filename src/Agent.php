@@ -347,7 +347,9 @@ class Agent extends Mobile_Detect
 
         foreach ($all as $rules) {
             foreach ($rules as $key => $value) {
-                if (is_array($value)) $value = implode('|', $value);
+                if (is_array($value)) {
+                    $value = implode('|', $value);
+                }
 
                 if (empty($merged[$key])) {
                     $merged[$key] = $value;
