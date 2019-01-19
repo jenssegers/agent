@@ -222,6 +222,11 @@ class AgentTest extends TestCase
             $platform = $agent->platform();
             $this->assertEquals($version, $agent->version($platform), $ua);
         }
+
+        foreach ($this->browsers as $ua => $browser) {
+            $agent->setUserAgent('FAKE');
+            $this->assertFalse($agent->version($browser));
+        }
     }
 
     public function testIsMethods()

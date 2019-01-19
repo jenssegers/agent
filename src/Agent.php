@@ -320,6 +320,10 @@ class Agent extends Mobile_Detect
             $properties[$propertyName] = (array) $properties[$propertyName];
 
             foreach ($properties[$propertyName] as $propertyMatchString) {
+                if (is_array($propertyMatchString)) {
+                    $propertyMatchString = implode("|", $propertyMatchString);
+                }
+
                 $propertyPattern = str_replace('[VER]', self::VER, $propertyMatchString);
 
                 // Identify and extract the version.
