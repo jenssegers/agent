@@ -309,11 +309,11 @@ class Agent extends Mobile_Detect
     {
         if ($this->isDesktop($userAgent, $httpHeaders)) {
             return "desktop";
-        } else if ($this->isPhone($userAgent, $httpHeaders)) {
+        } elseif ($this->isPhone($userAgent, $httpHeaders)) {
             return "phone";
-        } else if ($this->isTablet($userAgent, $httpHeaders)) {
+        } elseif ($this->isTablet($userAgent, $httpHeaders)) {
             return "tablet";
-        } else if ($this->isRobot($userAgent)) {
+        } elseif ($this->isRobot($userAgent)) {
             return "robot";
         }
 
