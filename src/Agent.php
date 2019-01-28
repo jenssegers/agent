@@ -298,6 +298,27 @@ class Agent extends Mobile_Detect
     {
         return $this->getCrawlerDetect()->isCrawler($userAgent ?: $this->userAgent);
     }
+    
+    /**
+     * Get the device type
+     * @param null $userAgent
+     * @param null $httpHeaders
+     * @return string
+     */
+    public function deviceType($userAgent = null, $httpHeaders = null)
+    {
+        if ($this->isDesktop($userAgent, $httpHeaders)) {
+            return "desktop";
+        } else if ($this->isPhone($userAgent, $httpHeaders)) {
+            return "phone";
+        } else if ($this->isTablet($userAgent, $httpHeaders)) {
+            return "tablet";
+        } else if ($this->isRobot($userAgent)) {
+            return "robot";
+        }
+
+        return "other";
+    }
 
     public function version($propertyName, $type = self::VERSION_TYPE_STRING)
     {
