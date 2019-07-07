@@ -1,7 +1,7 @@
 Agent
 =====
 
-[![Latest Stable Version](http://img.shields.io/packagist/v/jenssegers/agent.svg)](https://packagist.org/packages/jenssegers/agent) [![Total Downloads](http://img.shields.io/packagist/dm/jenssegers/agent.svg)](https://packagist.org/packages/jenssegers/agent) [![Build Status](http://img.shields.io/travis/jenssegers/agent.svg)](https://travis-ci.org/jenssegers/agent) [![Coverage Status](http://img.shields.io/coveralls/jenssegers/agent.svg)](https://coveralls.io/r/jenssegers/agent) [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg)](https://www.paypal.me/jenssegers)
+[![Financial Contributors on Open Collective](https://opencollective.com/agent/all/badge.svg?label=financial+contributors)](https://opencollective.com/agent) [![Latest Stable Version](http://img.shields.io/packagist/v/jenssegers/agent.svg)](https://packagist.org/packages/jenssegers/agent) [![Total Downloads](http://img.shields.io/packagist/dm/jenssegers/agent.svg)](https://packagist.org/packages/jenssegers/agent) [![Build Status](http://img.shields.io/travis/jenssegers/agent.svg)](https://travis-ci.org/jenssegers/agent) [![Coverage Status](http://img.shields.io/coveralls/jenssegers/agent.svg)](https://coveralls.io/r/jenssegers/agent) [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg)](https://www.paypal.me/jenssegers)
 
 A PHP desktop/mobile user agent parser with support for Laravel, based on [Mobile Detect](https://github.com/serbanghita/Mobile-Detect) with desktop support and additional functionality.
 
@@ -174,6 +174,36 @@ $version = $agent->version($platform);
 ```
 
 *Note, the version method is still in beta, so it might not return the correct result.*
+
+## Contributors
+
+### Code Contributors
+
+This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+<a href="https://github.com/jenssegers/agent/graphs/contributors"><img src="https://opencollective.com/agent/contributors.svg?width=890&button=false" /></a>
+
+### Financial Contributors
+
+Become a financial contributor and help us sustain our community. [[Contribute](https://opencollective.com/agent/contribute)]
+
+#### Individuals
+
+<a href="https://opencollective.com/agent"><img src="https://opencollective.com/agent/individuals.svg?width=890"></a>
+
+#### Organizations
+
+Support this project with your organization. Your logo will show up here with a link to your website. [[Contribute](https://opencollective.com/agent/contribute)]
+
+<a href="https://opencollective.com/agent/organization/0/website"><img src="https://opencollective.com/agent/organization/0/avatar.svg"></a>
+<a href="https://opencollective.com/agent/organization/1/website"><img src="https://opencollective.com/agent/organization/1/avatar.svg"></a>
+<a href="https://opencollective.com/agent/organization/2/website"><img src="https://opencollective.com/agent/organization/2/avatar.svg"></a>
+<a href="https://opencollective.com/agent/organization/3/website"><img src="https://opencollective.com/agent/organization/3/avatar.svg"></a>
+<a href="https://opencollective.com/agent/organization/4/website"><img src="https://opencollective.com/agent/organization/4/avatar.svg"></a>
+<a href="https://opencollective.com/agent/organization/5/website"><img src="https://opencollective.com/agent/organization/5/avatar.svg"></a>
+<a href="https://opencollective.com/agent/organization/6/website"><img src="https://opencollective.com/agent/organization/6/avatar.svg"></a>
+<a href="https://opencollective.com/agent/organization/7/website"><img src="https://opencollective.com/agent/organization/7/avatar.svg"></a>
+<a href="https://opencollective.com/agent/organization/8/website"><img src="https://opencollective.com/agent/organization/8/avatar.svg"></a>
+<a href="https://opencollective.com/agent/organization/9/website"><img src="https://opencollective.com/agent/organization/9/avatar.svg"></a>
 
 ## License
 
