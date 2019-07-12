@@ -197,7 +197,7 @@ class Agent extends Mobile_Detect
      * Match a detection rule and return the matched key.
      * @param  array $rules
      * @param  string|null $userAgent
-     * @return string
+     * @return string|bool
      */
     protected function findDetectionRulesAgainstUA(array $rules, $userAgent = null)
     {
@@ -219,7 +219,7 @@ class Agent extends Mobile_Detect
     /**
      * Get the browser name.
      * @param  string|null $userAgent
-     * @return string
+     * @return string|bool
      */
     public function browser($userAgent = null)
     {
@@ -229,7 +229,7 @@ class Agent extends Mobile_Detect
     /**
      * Get the platform name.
      * @param  string|null $userAgent
-     * @return string
+     * @return string|bool
      */
     public function platform($userAgent = null)
     {
@@ -239,7 +239,7 @@ class Agent extends Mobile_Detect
     /**
      * Get the device name.
      * @param  string|null $userAgent
-     * @return string
+     * @return string|bool
      */
     public function device($userAgent = null)
     {
