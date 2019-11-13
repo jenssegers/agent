@@ -39,7 +39,7 @@ class Agent extends Mobile_Detect
     protected static $additionalBrowsers = [
         'Opera Mini' => 'Opera Mini',
         'Opera' => 'Opera|OPR',
-        'Edge' => 'Edge',
+        'Edge' => 'Edge|Edg',
         'UCBrowser' => 'UCBrowser',
         'Vivaldi' => 'Vivaldi',
         'Chrome' => 'Chrome',
@@ -69,7 +69,7 @@ class Agent extends Mobile_Detect
         'Netscape' => 'Netscape/[VER]',
         'Mozilla' => 'rv:[VER]',
         'IE' => ['IEMobile/[VER];', 'IEMobile [VER]', 'MSIE [VER];', 'rv:[VER]'],
-        'Edge' => 'Edge/[VER]',
+        'Edge' => ['Edge/[VER]', 'Edg/[VER]'],
         'Vivaldi' => 'Vivaldi/[VER]',
     ];
 
