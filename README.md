@@ -178,3 +178,7 @@ $version = $agent->version($platform);
 ## License
 
 Laravel User Agent is licensed under [The MIT License (MIT)](LICENSE).
+
+## Security contact information
+
+To report a security vulnerability, follow [these steps](https://tidelift.com/security).
