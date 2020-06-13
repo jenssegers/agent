@@ -40,6 +40,7 @@ class Agent extends Mobile_Detect
         'Opera Mini' => 'Opera Mini',
         'Opera' => 'Opera|OPR',
         'Edge' => 'Edge|Edg',
+        'Coc Coc' => 'coc_coc_browser',
         'UCBrowser' => 'UCBrowser',
         'Vivaldi' => 'Vivaldi',
         'Chrome' => 'Chrome',
@@ -48,7 +49,6 @@ class Agent extends Mobile_Detect
         'IE' => 'MSIE|IEMobile|MSIEMobile|Trident/[.0-9]+',
         'Netscape' => 'Netscape',
         'Mozilla' => 'Mozilla',
-        'Coc Coc' => 'coc_coc_browser',
     ];
 
     /**
