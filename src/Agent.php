@@ -48,6 +48,7 @@ class Agent extends Mobile_Detect
         'IE' => 'MSIE|IEMobile|MSIEMobile|Trident/[.0-9]+',
         'Netscape' => 'Netscape',
         'Mozilla' => 'Mozilla',
+        'Coc Coc' => 'coc_coc_browser',
     ];
 
     /**
@@ -71,6 +72,7 @@ class Agent extends Mobile_Detect
         'IE' => ['IEMobile/[VER];', 'IEMobile [VER]', 'MSIE [VER];', 'rv:[VER]'],
         'Edge' => ['Edge/[VER]', 'Edg/[VER]'],
         'Vivaldi' => 'Vivaldi/[VER]',
+        'Coc Coc' => 'coc_coc_browser/[VER]',
     ];
 
     /**
@@ -298,7 +300,7 @@ class Agent extends Mobile_Detect
     {
         return $this->getCrawlerDetect()->isCrawler($userAgent ?: $this->userAgent);
     }
-    
+
     /**
      * Get the device type
      * @param null $userAgent
