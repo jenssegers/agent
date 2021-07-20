@@ -14,6 +14,7 @@ class Agent extends Mobile_Detect
      */
     protected static $desktopDevices = [
         'Macintosh' => 'Macintosh',
+        'X Window System' => 'X11',
     ];
 
     /**
