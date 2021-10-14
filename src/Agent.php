@@ -71,7 +71,7 @@ class Agent extends Mobile_Detect
         'Netscape' => 'Netscape/[VER]',
         'Mozilla' => 'rv:[VER]',
         'IE' => ['IEMobile/[VER];', 'IEMobile [VER]', 'MSIE [VER];', 'rv:[VER]'],
-        'Edge' => ['Edge/[VER]', 'Edg/[VER]'],
+        'Edge' => ['Edge/[VER]', 'Edg/[VER]', 'EdgA/[VER]', 'EdgiOS/[VER]'],
         'Vivaldi' => 'Vivaldi/[VER]',
         'Coc Coc' => 'coc_coc_browser/[VER]',
     ];
