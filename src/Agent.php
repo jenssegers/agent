@@ -137,10 +137,7 @@ class Agent extends Mobile_Detect
 
     public static function getOperatingSystems()
     {
-        return static::mergeRules(
-            static::$operatingSystems,
-            static::$additionalOperatingSystems
-        );
+        return static::$operatingSystems;
     }
 
     public static function getPlatforms()
