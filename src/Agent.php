@@ -106,6 +106,32 @@ class Agent extends Mobile_Detect
         return $rules;
     }
 
+
+    /**
+     * Method gets the mobile detection rules. This method is used for the magic methods $detect->is*().
+     *
+     * Since this function should only return rules that can detect mobile devices, do not pollute it
+     * with non-mobile stuff.
+     *
+     * @return array All the rules (but not extended).
+     */
+    public static function getMobileDetectionRules()
+    {
+        static $rules;
+
+        if (!$rules) {
+            $rules = array_merge(
+                parent::getPhoneDevices(),
+                parent::getTabletDevices(),
+                parent::getOperatingSystems(),
+                parent::getBrowsers()
+            );
+        }
+
+        return $rules;
+
+    }
+
     public function getRules()
     {
         if ($this->detectionType === static::DETECTION_TYPE_EXTENDED) {
