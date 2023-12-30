@@ -12,7 +12,7 @@
     ],
     "require": {
         "php": ">=5.6",
-        "mobiledetect/mobiledetectlib": "^2.7.6",
+        "mobiledetect/mobiledetectlib": "^4.8",
         "jaybizzle/crawler-detect": "^1.2"
     },
     "require-dev": {
